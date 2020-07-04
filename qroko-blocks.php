@@ -111,3 +111,9 @@ function qroko_blocks_register_categories( $categories, $post ) {
   return $categories;
 }
 add_filter( 'block_categories', 'qroko_blocks_register_categories', 10, 2 );
+
+//----------------------------------------------------
+// Setting: Include Functions
+//----------------------------------------------------
+
+require_once( 'functions/open-graph.php' );
