@@ -9,6 +9,10 @@ import "./editor.css"
 
 registerBlockType("qroko-blocks/blog-card", {
   title: __("ブログカード", "qroko-blocks"),
+  description: __(
+    "カード型のリンクを作るブロック。リンク先URLからOpen Graphを取得した後に編集もできます。",
+    "qroko-blocks"
+  ),
   category: "qroko",
   icon: (
     <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -42,6 +46,14 @@ registerBlockType("qroko-blocks/blog-card", {
     imageAlt: {
       type: "string",
       default: "",
+    },
+    imagePosition: {
+      type: "string",
+      default: "left",
+    },
+    imageFit: {
+      type: "string",
+      default: "cover",
     },
     title: {
       type: "string",
@@ -151,13 +163,40 @@ registerBlockType("qroko-blocks/blog-card", {
     return (
       <div className={classNames(className, "qroko-blocks-blog-card")}>
         {attributes.title ? (
-          <div className="qroko-blocks-blog-card-columns">
+          <div
+            className={classNames(
+              "qroko-blocks-blog-card-columns",
+              attributes.imagePosition === "right" ? "is-reverse" : ""
+            )}
+          >
             {attributes.imageURL ? (
               <div className="qroko-blocks-blog-card-column is-flex-fixed-image">
-                <div className="qroko-blocks-blog-card-image-wrap is-cover">
+                {isSelected ? (
+                  <button
+                    className="qroko-blocks-blog-card-button is-close"
+                    type="button"
+                  >
+                    <svg
+                      className="icon"
+                      viewBox="0 0 16 16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm9.854 4.854a.5.5 0 0 0-.708-.708L8 7.293 4.854 4.146a.5.5 0 1 0-.708.708L7.293 8l-3.147 3.146a.5.5 0 0 0 .708.708L8 8.707l3.146 3.147a.5.5 0 0 0 .708-.708L8.707 8l3.147-3.146z"
+                      />
+                    </svg>
+                  </button>
+                ) : (
+                  ""
+                )}
+                <div className="qroko-blocks-blog-card-image-wrap">
                   <img
                     src={attributes.imageURL}
-                    className="qroko-blocks-blog-card-image"
+                    className={classNames(
+                      "qroko-blocks-blog-card-image",
+                      "is-" + attributes.imageFit
+                    )}
                   />
                 </div>
               </div>

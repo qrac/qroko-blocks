@@ -11,6 +11,10 @@
   display: flex;
 }
 
+.qroko-blocks-blog-card-columns.is-reverse {
+  flex-direction: row-reverse;
+}
+
 .qroko-blocks-blog-card-columns.is-bottom {
   align-items: flex-end;
 }
@@ -55,7 +59,7 @@
   margin-bottom: 0;
 }
 
-.qroko-blocks-blog-card-image-wrap.is-cover {
+.qroko-blocks-blog-card-image-wrap {
   position: absolute;
   top: 0;
   left: 0;
@@ -66,8 +70,15 @@
 
 .qroko-blocks-blog-card-image {
   max-width: 100%;
-  object-fit: cover;
   object-position: center center;
+}
+
+.qroko-blocks-blog-card-image.is-cover {
+  object-fit: cover;
+}
+
+.qroko-blocks-blog-card-image.is-contain {
+  object-fit: contain;
 }
 
 .qroko-blocks-blog-card-meta {
