@@ -363,16 +363,6 @@ registerBlockType("qroko-blocks/blog-card", {
                 </div>
               </div>
             )}
-            {/*<div className="qroko-blocks-blog-card-column is-flex-none">
-            <MediaUpload
-              onSelect={(media) => {
-                setAttributes({ imageAlt: media.alt, ogImageURL: media.url })
-              }}
-              type="image"
-              value={attributes.imageID}
-              render={({ open }) => getImageButton(open)}
-            />
-            </div>*/}
             <div className="qroko-blocks-blog-card-column is-padding is-flex-grow">
               <div className="qroko-blocks-blog-card-meta">
                 {attributes.title && (
@@ -420,6 +410,59 @@ registerBlockType("qroko-blocks/blog-card", {
     )
   },
   save({ attributes, className }) {
-    return <div className={className}>test</div>
+    return (
+      <div className={classNames(className, "qroko-blocks-blog-card")}>
+        <a href={attributes.url} className="qroko-blocks-blog-card-link">
+          <div
+            className={classNames(
+              "qroko-blocks-blog-card-columns",
+              attributes.imagePosition === "right" ? "is-reverse" : ""
+            )}
+          >
+            {(attributes.imageURL || attributes.ogImageURL) && (
+              <div className="qroko-blocks-blog-card-column is-flex-none">
+                <div className="qroko-blocks-blog-card-image-container">
+                  <div className="qroko-blocks-blog-card-image-wrap">
+                    <img
+                      src={
+                        attributes.imageURL
+                          ? attributes.imageURL
+                          : attributes.ogImageURL
+                          ? attributes.ogImageURL
+                          : ""
+                      }
+                      alt={attributes.imageAlt}
+                      className={classNames(
+                        "qroko-blocks-blog-card-image",
+                        "is-" + attributes.imageFit
+                      )}
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+            <div className="qroko-blocks-blog-card-column is-padding is-flex-grow">
+              <div className="qroko-blocks-blog-card-meta">
+                {attributes.title && (
+                  <div className="qroko-blocks-blog-card-heading">
+                    {attributes.title}
+                  </div>
+                )}
+                {attributes.description && (
+                  <div className="qroko-blocks-blog-card-description">
+                    {attributes.description}
+                  </div>
+                )}
+                {attributes.ogDomain && (
+                  <div className="qroko-blocks-blog-card-domain">
+                    {attributes.ogDomain}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    )
   },
 })

@@ -6,3 +6,138 @@
   border-radius: 4px;
   overflow: hidden;
 }
+
+.qroko-blocks-blog-card-link {
+  display: block;
+  text-decoration: none;
+}
+
+.qroko-blocks-blog-card-columns {
+  display: flex;
+}
+
+.qroko-blocks-blog-card-columns.is-reverse {
+  flex-direction: row-reverse;
+}
+
+.qroko-blocks-blog-card-columns.is-bottom {
+  align-items: flex-end;
+}
+
+.qroko-blocks-blog-card-columns:not(:last-child) {
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.qroko-blocks-blog-card-columns.is-padding,
+.qroko-blocks-blog-card-column.is-padding {
+  padding: 16px;
+}
+
+.qroko-blocks-blog-card-columns.is-gap
+  > .qroko-blocks-blog-card-column:not(:last-child) {
+  margin-right: 8px;
+}
+
+.qroko-blocks-blog-card-column.is-flex-grow {
+  flex: 1 0 0;
+}
+
+.qroko-blocks-blog-card-column.is-flex-none {
+  flex: none;
+}
+
+.qroko-blocks-blog-card-delete-image-button .icon {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+}
+
+.qroko-blocks-blog-card-image-container {
+  position: relative;
+  width: 120px;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .qroko-blocks-blog-card-image-container {
+    width: 176px;
+  }
+}
+
+.qroko-blocks-blog-card-image-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.qroko-blocks-blog-card-image {
+  width: 100%;
+  height: 100%;
+  object-position: center center;
+}
+
+.qroko-blocks-blog-card-image.is-cover {
+  object-fit: cover;
+}
+
+.qroko-blocks-blog-card-image.is-contain {
+  object-fit: contain;
+}
+
+.qroko-blocks-blog-card-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 118px;
+  padding: 4px 0;
+}
+
+.qroko-blocks-blog-card-meta > *:not(:first-child) {
+  margin-top: 12px;
+  margin-top: 0.75rem;
+}
+
+.qroko-blocks-blog-card-heading {
+  flex: none;
+  display: block;
+  width: 100%;
+  margin: 0;
+  color: #292929;
+  font-size: 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  font-feature-settings: "palt";
+  letter-spacing: 0.0125em;
+  line-height: 1.25;
+  word-wrap: break-word;
+}
+
+.qroko-blocks-blog-card-description {
+  flex: none;
+  display: block;
+  width: 100%;
+  margin: 0;
+  color: #6f6f6f;
+  font-size: 12px;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.qroko-blocks-blog-card-domain {
+  flex: none;
+  display: block;
+  width: 100%;
+  margin: 0;
+  color: #6f6f6f;
+  font-size: 12px;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.25;
+  word-break: break-all;
+}
