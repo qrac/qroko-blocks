@@ -1,10 +1,6 @@
 import { __ } from "@wordpress/i18n"
 import { registerBlockType } from "@wordpress/blocks"
-import {
-  InspectorControls,
-  MediaUpload,
-  RichText,
-} from "@wordpress/block-editor"
+import { InspectorControls, MediaUpload } from "@wordpress/block-editor"
 import {
   PanelBody,
   BaseControl,
@@ -17,6 +13,16 @@ import {
 import classNames from "classnames"
 
 import "./editor.css"
+
+const imagePositionList = [
+  { label: "左", value: "left" },
+  { label: "右", value: "right" },
+]
+
+const imageFitList = [
+  { label: "広げる", value: "cover" },
+  { label: "収める", value: "contain" },
+]
 
 registerBlockType("qroko-blocks/blog-card", {
   title: __("ブログカード", "qroko-blocks"),
@@ -194,27 +200,48 @@ registerBlockType("qroko-blocks/blog-card", {
       )
     }
 
-    /*const getImageButton = (openEvent) => {
-      if (attributes.imageURL) {
+    const mediaUploadRender = (openEvent) => {
+      if (attributes.imageURL || attributes.ogImageURL) {
         return (
-          <div className="qroko-blocks-blog-card-image-wrap">
-            <img
-              src={attributes.imageURL}
+          <div>
+            <Button
               onClick={openEvent}
-              className="qroko-blocks-blog-card-image"
-            />
+              className="qroko-blocks-blog-card-image-preview"
+            >
+              <img
+                src={
+                  attributes.imageURL
+                    ? attributes.imageURL
+                    : attributes.ogImageURL
+                    ? attributes.ogImageURL
+                    : ""
+                }
+                alt={attributes.imageAlt}
+              />
+            </Button>
+            <Button
+              onClick={() => {
+                setAttributes({
+                  imageID: 0,
+                  imageURL: "",
+                  imageAlt: "",
+                  ogImageURL: "",
+                })
+              }}
+              className="button"
+            >
+              {__("画像を削除", "qroko-blocks")}
+            </Button>
           </div>
         )
       } else {
         return (
-          <div className="qroko-blocks-blog-card-image-button-wrap">
-            <Button onClick={openEvent} className="button">
-              {__("画像を上書き", "qroko-blocks")}
-            </Button>
-          </div>
+          <Button onClick={openEvent} className="button">
+            {__("画像を追加", "qroko-blocks")}
+          </Button>
         )
       }
-    }*/
+    }
 
     return (
       <div className={classNames(className, "qroko-blocks-blog-card")}>
@@ -260,6 +287,46 @@ registerBlockType("qroko-blocks/blog-card", {
                 onChange={(value) => {
                   setAttributes({
                     ogDescriptionCharacterCount: !value ? 60 : value,
+                  })
+                }}
+              />
+            </BaseControl>
+          </PanelBody>
+          <PanelBody title={__("画像", "qroko-blocks")}>
+            <BaseControl>
+              <MediaUpload
+                onSelect={(media) => {
+                  setAttributes({
+                    imageID: media.id,
+                    imageURL: media.url,
+                    imageAlt: media.alt,
+                  })
+                }}
+                type={"image"}
+                value={attributes.imageID}
+                render={({ open }) => mediaUploadRender(open)}
+              />
+            </BaseControl>
+            <BaseControl>
+              <RadioControl
+                label={__("画像位置", "qroko-blocks")}
+                selected={attributes.imagePosition}
+                options={imagePositionList}
+                onChange={(option) => {
+                  setAttributes({
+                    imagePosition: option,
+                  })
+                }}
+              />
+            </BaseControl>
+            <BaseControl>
+              <RadioControl
+                label={__("画像の収め方", "qroko-blocks")}
+                selected={attributes.imageFit}
+                options={imageFitList}
+                onChange={(option) => {
+                  setAttributes({
+                    imageFit: option,
                   })
                 }}
               />
