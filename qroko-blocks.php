@@ -5,7 +5,7 @@
  * Description: Custom Blocks for headless WordPress
  * Author: qrac
  * Author URI: https://qrac.jp/
- * Version: 0.1.0
+ * Version: 1.0.0
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  *
