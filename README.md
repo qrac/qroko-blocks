@@ -10,6 +10,8 @@ Qroko Blocks は Gutenberg にカスタムブロックを追加するプラグ�
 
 「日本語環境で Gutenberg を使った場合に執筆が快適であること」を主眼として開発。主に、WordPress を headless CMS として使うテーマ「[Qroko](https://github.com/qrac/qroko)」での利用を想定していますが、他のテーマでも使えるよう依存性のない設計を心がけています。
 
+モチーフは歌舞伎の黒子です。Web サイト制作の舞台袖で活躍してくれることでしょう。
+
 ## Detail
 
 - ブログカード
