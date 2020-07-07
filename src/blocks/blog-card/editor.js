@@ -31,7 +31,11 @@ registerBlockType("qroko-blocks/blog-card", {
       type: "string",
       default: "",
     },
-    domain: {
+    title: {
+      type: "string",
+      default: "",
+    },
+    description: {
       type: "string",
       default: "",
     },
@@ -55,11 +59,11 @@ registerBlockType("qroko-blocks/blog-card", {
       type: "string",
       default: "cover",
     },
-    title: {
+    ogDomain: {
       type: "string",
       default: "",
     },
-    description: {
+    ogImageURL: {
       type: "string",
       default: "",
     },
@@ -129,13 +133,46 @@ registerBlockType("qroko-blocks/blog-card", {
       }
 
       setAttributes({
-        domain: openGraphDomain,
-        imageID: 0,
-        imageURL: openGraphImage(),
-        imageAlt: openGraphTitle(),
         title: openGraphTitle(),
         description: openGraphDescription(),
+        imageID: 0,
+        imageURL: "",
+        imageAlt: openGraphTitle(),
+        ogDomain: openGraphDomain,
+        ogImageURL: openGraphImage(),
       })
+    }
+
+    const DeleteImageButton = () => {
+      return (
+        <button
+          className="qroko-blocks-blog-card-delete-image-button"
+          type="button"
+          onClick={() =>
+            setAttributes({
+              imageID: 0,
+              imageAlt: "",
+              imageURL: "",
+              ogImageURL: "",
+            })
+          }
+        >
+          <svg
+            className="icon"
+            viewBox="0 0 16 16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"
+            />
+            <path
+              fill-rule="evenodd"
+              d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"
+            />
+          </svg>
+        </button>
+      )
     }
 
     /*const getImageButton = (openEvent) => {
@@ -169,50 +206,43 @@ registerBlockType("qroko-blocks/blog-card", {
               attributes.imagePosition === "right" ? "is-reverse" : ""
             )}
           >
-            {attributes.imageURL ? (
-              <div className="qroko-blocks-blog-card-column is-flex-fixed-image">
-                {isSelected ? (
-                  <button
-                    className="qroko-blocks-blog-card-button is-close"
-                    type="button"
-                  >
-                    <svg
-                      className="icon"
-                      viewBox="0 0 16 16"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm9.854 4.854a.5.5 0 0 0-.708-.708L8 7.293 4.854 4.146a.5.5 0 1 0-.708.708L7.293 8l-3.147 3.146a.5.5 0 0 0 .708.708L8 8.707l3.146 3.147a.5.5 0 0 0 .708-.708L8.707 8l3.147-3.146z"
-                      />
-                    </svg>
-                  </button>
-                ) : (
-                  ""
-                )}
-                <div className="qroko-blocks-blog-card-image-wrap">
-                  <img
-                    src={attributes.imageURL}
-                    className={classNames(
-                      "qroko-blocks-blog-card-image",
-                      "is-" + attributes.imageFit
-                    )}
-                  />
-                </div>
-              </div>
-            ) : (
-              ""
-            )}
+            {(() => {
+              if (attributes.imageURL || attributes.ogImageURL) {
+                return (
+                  <div className="qroko-blocks-blog-card-column is-flex-none">
+                    <div className="qroko-blocks-blog-card-image-container">
+                      {isSelected ? <DeleteImageButton /> : ""}
+                      <div className="qroko-blocks-blog-card-image-wrap">
+                        <img
+                          src={
+                            attributes.imageURL
+                              ? attributes.imageURL
+                              : attributes.ogImageURL
+                              ? attributes.ogImageURL
+                              : ""
+                          }
+                          alt={attributes.imageAlt}
+                          className={classNames(
+                            "qroko-blocks-blog-card-image",
+                            "is-" + attributes.imageFit
+                          )}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )
+              }
+            })()}
             {/*<div className="qroko-blocks-blog-card-column is-flex-none">
             <MediaUpload
               onSelect={(media) => {
-                setAttributes({ imageAlt: media.alt, imageURL: media.url })
+                setAttributes({ imageAlt: media.alt, ogImageURL: media.url })
               }}
               type="image"
               value={attributes.imageID}
               render={({ open }) => getImageButton(open)}
             />
-          </div>*/}
+            </div>*/}
             <div className="qroko-blocks-blog-card-column is-padding is-flex-grow">
               <div className="qroko-blocks-blog-card-meta">
                 <div className="qroko-blocks-blog-card-heading">
@@ -236,9 +266,9 @@ registerBlockType("qroko-blocks/blog-card", {
                     placeholder={__("ディスクリプション", "qroko-blocks")}
                   />
                 </div>
-                {attributes.domain ? (
+                {attributes.ogDomain ? (
                   <div className="qroko-blocks-blog-card-domain">
-                    {attributes.domain}
+                    {attributes.ogDomain}
                   </div>
                 ) : (
                   ""
@@ -282,7 +312,7 @@ registerBlockType("qroko-blocks/blog-card", {
             </div>
             <div className="qroko-blocks-blog-card-column is-flex-none">
               <Button
-                onClick={() => setAttributes({ imageID: 0, imageURL: "" })}
+                onClick={() => setAttributes({ imageID: 0, ogImageURL: "" })}
                 className="button is-small"
               >
                 {__("画像クリア", "qroko-blocks")}
