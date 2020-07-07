@@ -1,8 +1,19 @@
 import { __ } from "@wordpress/i18n"
 import { registerBlockType } from "@wordpress/blocks"
-import { Button, TextControl } from "@wordpress/components"
-import { RichText } from "@wordpress/block-editor"
-import { MediaUpload } from "@wordpress/editor"
+import {
+  InspectorControls,
+  MediaUpload,
+  RichText,
+} from "@wordpress/block-editor"
+import {
+  PanelBody,
+  BaseControl,
+  TextareaControl,
+  RangeControl,
+  RadioControl,
+  TextControl,
+  Button,
+} from "@wordpress/components"
 import classNames from "classnames"
 
 import "./editor.css"
@@ -63,6 +74,14 @@ registerBlockType("qroko-blocks/blog-card", {
       type: "string",
       default: "",
     },
+    ogTitleCharacterCount: {
+      type: "number",
+      default: 50,
+    },
+    ogDescriptionCharacterCount: {
+      type: "number",
+      default: 60,
+    },
     ogImageURL: {
       type: "string",
       default: "",
@@ -113,7 +132,7 @@ registerBlockType("qroko-blocks/blog-card", {
       }
 
       const openGraphTitle = () => {
-        const count = 50
+        const count = attributes.ogTitleCharacterCount
         const length = data.title.length
         if (length >= count) {
           return data.title.substr(0, count) + " ..."
@@ -123,7 +142,7 @@ registerBlockType("qroko-blocks/blog-card", {
       }
 
       const openGraphDescription = () => {
-        const count = 60
+        const count = attributes.ogDescriptionCharacterCount
         const length = data.description.length
         if (length >= count) {
           return data.description.substr(0, count) + " ..."
@@ -199,40 +218,84 @@ registerBlockType("qroko-blocks/blog-card", {
 
     return (
       <div className={classNames(className, "qroko-blocks-blog-card")}>
-        {attributes.title ? (
+        <InspectorControls>
+          <PanelBody title={__("タイトル", "qroko-blocks")}>
+            <BaseControl>
+              <TextareaControl
+                value={attributes.title}
+                onChange={(value) => {
+                  setAttributes({ title: value })
+                }}
+              />
+              <RangeControl
+                value={attributes.ogTitleCharacterCount}
+                label={__("取得文字数", "qroko-blocks")}
+                min={1}
+                max={200}
+                initialPosition={50}
+                allowReset
+                onChange={(value) => {
+                  setAttributes({
+                    ogTitleCharacterCount: !value ? 50 : value,
+                  })
+                }}
+              />
+            </BaseControl>
+          </PanelBody>
+          <PanelBody title={__("概要", "qroko-blocks")}>
+            <BaseControl>
+              <TextareaControl
+                value={attributes.description}
+                onChange={(value) => {
+                  setAttributes({ description: value })
+                }}
+              />
+              <RangeControl
+                value={attributes.ogDescriptionCharacterCount}
+                label={__("取得文字数", "qroko-blocks")}
+                min={1}
+                max={200}
+                initialPosition={60}
+                allowReset
+                onChange={(value) => {
+                  setAttributes({
+                    ogDescriptionCharacterCount: !value ? 60 : value,
+                  })
+                }}
+              />
+            </BaseControl>
+          </PanelBody>
+        </InspectorControls>
+        {attributes.title && (
           <div
             className={classNames(
               "qroko-blocks-blog-card-columns",
               attributes.imagePosition === "right" ? "is-reverse" : ""
             )}
           >
-            {(() => {
-              if (attributes.imageURL || attributes.ogImageURL) {
-                return (
-                  <div className="qroko-blocks-blog-card-column is-flex-none">
-                    <div className="qroko-blocks-blog-card-image-container">
-                      {isSelected ? <DeleteImageButton /> : ""}
-                      <div className="qroko-blocks-blog-card-image-wrap">
-                        <img
-                          src={
-                            attributes.imageURL
-                              ? attributes.imageURL
-                              : attributes.ogImageURL
-                              ? attributes.ogImageURL
-                              : ""
-                          }
-                          alt={attributes.imageAlt}
-                          className={classNames(
-                            "qroko-blocks-blog-card-image",
-                            "is-" + attributes.imageFit
-                          )}
-                        />
-                      </div>
-                    </div>
+            {(attributes.imageURL || attributes.ogImageURL) && (
+              <div className="qroko-blocks-blog-card-column is-flex-none">
+                <div className="qroko-blocks-blog-card-image-container">
+                  {isSelected && <DeleteImageButton />}
+                  <div className="qroko-blocks-blog-card-image-wrap">
+                    <img
+                      src={
+                        attributes.imageURL
+                          ? attributes.imageURL
+                          : attributes.ogImageURL
+                          ? attributes.ogImageURL
+                          : ""
+                      }
+                      alt={attributes.imageAlt}
+                      className={classNames(
+                        "qroko-blocks-blog-card-image",
+                        "is-" + attributes.imageFit
+                      )}
+                    />
                   </div>
-                )
-              }
-            })()}
+                </div>
+              </div>
+            )}
             {/*<div className="qroko-blocks-blog-card-column is-flex-none">
             <MediaUpload
               onSelect={(media) => {
@@ -245,41 +308,26 @@ registerBlockType("qroko-blocks/blog-card", {
             </div>*/}
             <div className="qroko-blocks-blog-card-column is-padding is-flex-grow">
               <div className="qroko-blocks-blog-card-meta">
-                <div className="qroko-blocks-blog-card-heading">
-                  <RichText
-                    onChange={(content) => setAttributes({ title: content })}
-                    value={attributes.title}
-                    placeholder={__("タイトル", "qroko-blocks")}
-                    //withoutInteractiveFormatting={false}
-                    //formattingControls={[]}
-                    className="qroko-blocks-blog-card-heading"
-                  />
-                </div>
-                <div className="qroko-blocks-blog-card-description">
-                  <RichText
-                    onChange={(content) =>
-                      setAttributes({ description: content })
-                    }
-                    value={attributes.description}
-                    //withoutInteractiveFormatting={false}
-                    //formattingControls={[]}
-                    placeholder={__("ディスクリプション", "qroko-blocks")}
-                  />
-                </div>
-                {attributes.ogDomain ? (
+                {attributes.title && (
+                  <div className="qroko-blocks-blog-card-heading">
+                    {attributes.title}
+                  </div>
+                )}
+                {attributes.description && (
+                  <div className="qroko-blocks-blog-card-description">
+                    {attributes.description}
+                  </div>
+                )}
+                {attributes.ogDomain && (
                   <div className="qroko-blocks-blog-card-domain">
                     {attributes.ogDomain}
                   </div>
-                ) : (
-                  ""
                 )}
               </div>
             </div>
           </div>
-        ) : (
-          ""
         )}
-        {isSelected || !attributes.title ? (
+        {(isSelected || !attributes.title) && (
           <div className="qroko-blocks-blog-card-columns is-padding is-gap is-bottom">
             <div className="qroko-blocks-blog-card-column is-flex-grow">
               <TextControl
@@ -300,28 +348,7 @@ registerBlockType("qroko-blocks/blog-card", {
               </Button>
             </div>
           </div>
-        ) : (
-          ""
         )}
-        {/*isSelected && attributes.title ? (
-          <div className="qroko-blocks-blog-card-columns is-padding is-gap">
-            <div className="qroko-blocks-blog-card-column is-flex-none">
-              <Button className="button is-small">
-                {__("画像上書き", "qroko-blocks")}
-              </Button>
-            </div>
-            <div className="qroko-blocks-blog-card-column is-flex-none">
-              <Button
-                onClick={() => setAttributes({ imageID: 0, ogImageURL: "" })}
-                className="button is-small"
-              >
-                {__("画像クリア", "qroko-blocks")}
-              </Button>
-            </div>
-          </div>
-        ) : (
-          ""
-        )*/}
       </div>
     )
   },
