@@ -47,22 +47,10 @@ class OpenGraph implements Iterator
    * @return OpenGraph
    */
   static public function fetch($URI) {
-        $curl = curl_init($URI);
-
-        curl_setopt($curl, CURLOPT_FAILONERROR, true);
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_TIMEOUT, 15);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-
-        $response = curl_exec($curl);
-
-        curl_close($curl);
+        $response = wp_remote_get($URI);
 
         if (!empty($response)) {
-            return self::_parse($response);
+            return self::_parse($response['body']);
         } else {
             return false;
         }
@@ -213,8 +201,9 @@ class OpenGraph implements Iterator
 
 function open_graph() {
   $target_url = $_POST['target_url'];
+  $esc_target_url = esc_url($target_url);
 
-  $graph = OpenGraph::fetch($target_url);
+  $graph = OpenGraph::fetch($esc_target_url);
 
   $og_title = $graph->title;
   $og_description = $graph->description;
