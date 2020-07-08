@@ -16,6 +16,13 @@ Qroko Blocks は Gutenberg にカスタムブロックを追加するプラグ�
 
 - ブログカード
 
+## How to build
+
+```bash
+$ npm install
+$ npm run build
+```
+
 ## License
 
 - Plugin: Qroko Blocks - GNU General Public License v2.0 or late
