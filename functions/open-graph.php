@@ -85,19 +85,19 @@ class OpenGraph implements Iterator {
         $page->_values[$key] = $tag->getAttribute('content');
       }
 
-      //Added this if loop to retrieve description values from sites like the New York Times who have malformed it.
+      // Added this if loop to retrieve description values from sites like the New York Times who have malformed it.
       if ($tag ->hasAttribute('value') && $tag->hasAttribute('property') && strpos($tag->getAttribute('property'), 'og:') === 0) {
         $key = strtr(substr($tag->getAttribute('property'), 3), '-', '_');
         $page->_values[$key] = $tag->getAttribute('value');
       }
 
-      //Based on modifications at https://github.com/bashofmann/opengraph/blob/master/src/OpenGraph/OpenGraph.php
+      // Based on modifications at https://github.com/bashofmann/opengraph/blob/master/src/OpenGraph/OpenGraph.php
       if ($tag->hasAttribute('name') && $tag->getAttribute('name') === 'description') {
         $nonOgDescription = $tag->getAttribute('content');
       }
     }
 
-    //Based on modifications at https://github.com/bashofmann/opengraph/blob/master/src/OpenGraph/OpenGraph.php
+    // Based on modifications at https://github.com/bashofmann/opengraph/blob/master/src/OpenGraph/OpenGraph.php
     if (!isset($page->_values['title'])) {
       $titles = $doc->getElementsByTagName('title');
       if ($titles->length > 0) {
@@ -109,7 +109,7 @@ class OpenGraph implements Iterator {
       $page->_values['description'] = $nonOgDescription;
     }
 
-    //Fallback to use image_src if ogp::image isn't set.
+    // Fallback to use image_src if ogp::image isn't set.
     if (!isset($page->values['image'])) {
       $domxpath = new DOMXPath($doc);
       $elements = $domxpath->query("//link[@rel='image_src']");
