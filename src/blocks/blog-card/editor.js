@@ -144,7 +144,7 @@ registerBlockType("qroko-blocks/blog-card", {
 
       const openGraphTitle = () => {
         const count = attributes.ogTitleCharacterCount
-        const length = data.title.length
+        const length = data.title ? data.title.length : 0
         if (length >= count) {
           return data.title.substr(0, count) + " ..."
         } else {
@@ -154,7 +154,7 @@ registerBlockType("qroko-blocks/blog-card", {
 
       const openGraphDescription = () => {
         const count = attributes.ogDescriptionCharacterCount
-        const length = data.description.length
+        const length = data.description ? data.description.length : 0
         if (length >= count) {
           return data.description.substr(0, count) + " ..."
         } else {

@@ -2,4 +2,5 @@
 Thumbs.db
 *.log
 node_modules
+ChromePhp.php
 build

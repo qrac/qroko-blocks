@@ -211,10 +211,14 @@ function open_graph() {
   $records[] = array(
     'title' => $og_title,
     'description' => $og_description,
-    'url' => $og_url,
-    'image' => $og_image,
+    'url' => ($og_url === null) ? $esc_target_url : $og_url,
+    'image' => (substr($og_image, 0, 1) != 'h') ? null : $og_image,
     'type' => $og_type
   );
+
+  // Debug: Chrome
+  //include 'ChromePhp.php';
+  //ChromePhp::log(json_encode($records));
 
   echo json_encode($records);
 
