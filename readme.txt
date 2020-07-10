@@ -33,10 +33,14 @@ Yes, you can use it with any theme that has Gutenberg enabled.
 
 == Screenshots ==
 
-1. screenshot-1.png
-2. screenshot-2.png
+1. Blog Card (Editor)
+2. Blog Card (Front)
 
 == Changelog ==
+
+= 1.0.1 =
+* Fix Blog Card: Works without Open Graph
+* Translation support
 
 = 1.0.0 =
 * First release
