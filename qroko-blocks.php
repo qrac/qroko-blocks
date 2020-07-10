@@ -58,17 +58,14 @@ function qroko_blocks_register_block() {
     'editor_script' => 'qroko-blocks-editors'
   ));
 
-}
-add_action( 'init', 'qroko_blocks_register_block' );
-
-function qroko_blocks_script_translations() {
   // Setting Translations
   if ( function_exists( 'wp_set_script_translations' ) ) {
-    wp_set_script_translations( 'po', 'qroko-blocks',
+    wp_set_script_translations( 'qroko-blocks-editors', 'qroko-blocks',
     plugin_dir_path( __FILE__ ) . 'languages/' );
   }
+
 }
-add_action( 'init', 'qroko_blocks_script_translations' );
+add_action( 'init', 'qroko_blocks_register_block' );
 
 //----------------------------------------------------
 // Setting: Gutenberg Front End

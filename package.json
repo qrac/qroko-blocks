@@ -13,7 +13,7 @@
   "scripts": {
     "dev": "wp-scripts start ./src/editors.js ./src/fronts.js",
     "build": "wp-scripts build ./src/editors.js ./src/fronts.js",
-    "lang": "po2json ./languages/qroko-blocks-ja.po ./languages/qroko-blocks-ja-po.json -f jed",
+    "lang": "po2json ./languages/qroko-blocks-ja.po ./languages/qroko-blocks-ja-qroko-blocks-editors.json -f jed",
     "clean": "rmtrash ./build"
   },
   "devDependencies": {
