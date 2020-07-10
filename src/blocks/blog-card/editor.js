@@ -124,24 +124,6 @@ registerBlockType("qroko-blocks/blog-card", {
       const openGraphDomain = openGraphUrl.hostname
       const currentDomain = location.hostname
 
-      const openGraphImage = () => {
-        const currentProtocol = location.protocol
-        const currentSSL = currentProtocol === "https:"
-        const openGraphUrlProtocol = openGraphUrl.protocol
-        const openGraphSSL = openGraphUrlProtocol === "https:"
-        if (currentSSL && !openGraphSSL) {
-          console.log(
-            __(
-              "取得先の画像URLがhttpのため、Mixed contentとなるパスを防ぎました。",
-              "qroko-blocks"
-            )
-          )
-          return ""
-        } else {
-          return data.image
-        }
-      }
-
       const openGraphTitle = () => {
         const count = attributes.ogTitleCharacterCount
         const length = data.title ? data.title.length : 0
@@ -177,7 +159,7 @@ registerBlockType("qroko-blocks/blog-card", {
         imageURL: "",
         imageAlt: openGraphTitle(),
         ogDomain: openGraphDomain,
-        ogImageURL: openGraphImage(),
+        ogImageURL: data.image,
         externalLink: checkExternalLink(),
       })
     }

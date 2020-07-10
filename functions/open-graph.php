@@ -208,12 +208,23 @@ function open_graph() {
   $og_image = $graph->image;
   $og_type = $graph->type;
 
+  $esc_og_title = esc_html($og_title);
+  $esc_og_description = esc_html($og_description);
+  $esc_og_url = esc_url($og_url);
+  $esc_og_image = esc_url($og_image);
+  $esc_og_type = esc_html($og_type);
+
+  $merge_esc_url = ($esc_og_url === null) ? $esc_target_url : $esc_og_url;
+
+  $match_protocol = is_ssl() ? '|^https://.*$|' : '|^https?://.*$|';
+  $filter_esc_image = preg_match($match_protocol, $esc_og_image) ? $esc_og_image : null;
+
   $records[] = array(
-    'title' => $og_title,
-    'description' => $og_description,
-    'url' => ($og_url === null) ? $esc_target_url : $og_url,
-    'image' => (substr($og_image, 0, 1) != 'h') ? null : $og_image,
-    'type' => $og_type
+    'title' => $esc_og_title,
+    'description' => $esc_og_description,
+    'url' => $merge_esc_url,
+    'image' => $filter_esc_image,
+    'type' => $esc_og_type
   );
 
   // Debug: Chrome
