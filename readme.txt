@@ -13,13 +13,14 @@ Custom Blocks for headless WordPress
 
 == Description ==
 
-Qroko Blocks is a plugin for adding custom blocks to Gutenberg.
+Qroko Blocks is a plugin to add custom blocks to Gutenberg. It is listed in the official WordPress plugin directory.
 
 Our main goal was to make writing on Gutenberg easier. Mainly used with the theme "Qroko", which uses WordPress as a headless CMS. However, we have tried to design it so that it is not dependent on other themes as well.
 
-Qroko：https://github.com/qrac/qroko
-
 The motif is a kabuki kuroko, which will play an active role offstage in your website production.
+
+* Qroko: https://github.com/qrac/qroko
+* Qroko Blocks: https://github.com/qrac/qroko-blocks
 
 == Detail ==
 

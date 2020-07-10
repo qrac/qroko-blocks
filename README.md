@@ -6,15 +6,24 @@ Custom Blocks for headless WordPress
 
 ## About
 
-Qroko Blocks は Gutenberg にカスタムブロックを追加するプラグインです。
+Qroko Blocks は Gutenberg にカスタムブロックを追加するプラグインです。WordPress 公式プラグインディレクトリに登録されています。
 
-「日本語環境で Gutenberg を使った場合に執筆が快適であること」を主眼として開発。主に、WordPress を headless CMS として使うテーマ「[Qroko](https://github.com/qrac/qroko)」での利用を想定していますが、他のテーマでも使えるよう依存性のない設計を心がけています。
+「Gutenberg を使った場合に執筆が快適であること」を主眼として開発。主に、WordPress を headless CMS として使うテーマ「Qroko」での利用を想定していますが、他のテーマでも使えるよう依存性のない設計を心がけています。
 
 モチーフは歌舞伎の黒子です。Web サイト制作の舞台袖で活躍してくれることでしょう。
+
+- Qroko: [GitHub Repository](https://github.com/qrac/qroko)
+- Qroko Blocks: [GitHub Repository](https://github.com/qrac/qroko-blocks)
 
 ## Detail
 
 - ブログカード
+
+## How to Use
+
+WordPress 公式プラグインディレクトリからインストールして使うことができます。
+
+- Qroko Blocks: [Official WordPress Plugins Directory](https://wordpress.org/plugins/qroko-blocks/)
 
 ## How to build
 
