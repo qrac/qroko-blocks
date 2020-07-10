@@ -13,10 +13,12 @@
   "scripts": {
     "dev": "wp-scripts start ./src/editors.js ./src/fronts.js",
     "build": "wp-scripts build ./src/editors.js ./src/fronts.js",
+    "lang": "po2json ./languages/qroko-blocks-ja.po ./languages/qroko-blocks-ja-po.json -f jed",
     "clean": "rmtrash ./build"
   },
   "devDependencies": {
     "@wordpress/scripts": "^12.0.0",
-    "classnames": "^2.2.6"
+    "classnames": "^2.2.6",
+    "po2json": "^1.0.0-beta-2"
   }
 }

@@ -1,0 +1,107 @@
+# Copyright (C) 2020 qrac
+# This file is distributed under the same license as the Qroko Blocks plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Qroko Blocks 1.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/qroko-blocks\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-07-10T09:24:49+00:00\n"
+"PO-Revision-Date: 2020-07-10 22:49+0900\n"
+"X-Generator: Poedit 2.3.1\n"
+"X-Domain: qroko-blocks\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: ja\n"
+
+#. Plugin Name of the plugin
+#: qroko-blocks.php:107
+msgid "Qroko Blocks"
+msgstr "Qroko Blocks"
+
+#. Plugin URI of the plugin
+msgid "https://github.com/qrac/qroko-blocks/"
+msgstr "https://github.com/qrac/qroko-blocks/"
+
+#. Description of the plugin
+msgid "Custom Blocks for headless WordPress"
+msgstr "Custom Blocks for headless WordPress"
+
+#. Author of the plugin
+msgid "qrac"
+msgstr "qrac"
+
+#. Author URI of the plugin
+msgid "https://qrac.jp/"
+msgstr "https://qrac.jp/"
+
+#: build/editors.js:6 src/blocks/blog-card/editor.js:18
+msgid "Left"
+msgstr "左"
+
+#: build/editors.js:6 src/blocks/blog-card/editor.js:19
+msgid "Right"
+msgstr "右"
+
+#: build/editors.js:6 src/blocks/blog-card/editor.js:23
+msgid "Cover"
+msgstr "広げる"
+
+#: build/editors.js:6 src/blocks/blog-card/editor.js:24
+msgid "Contain"
+msgstr "収める"
+
+#: build/editors.js:6 src/blocks/blog-card/editor.js:28
+msgid "Blog Card"
+msgstr "ブログカード"
+
+#: build/editors.js:6 src/blocks/blog-card/editor.js:29
+msgid ""
+"Block to create a card link. You can also edit it after getting the Open "
+"Graph from the link URL."
+msgstr ""
+"カード型のリンクを作るブロック。リンク先URLからOpen Graphを取得した後に編"
+"集もできます。"
+
+#: build/editors.js:6 src/blocks/blog-card/editor.js:245
+msgid "Title"
+msgstr "タイトル"
+
+#: build/editors.js:6 src/blocks/blog-card/editor.js:255
+#: src/blocks/blog-card/editor.js:278
+msgid "Number of characters"
+msgstr "取得文字数"
+
+#: build/editors.js:6 src/blocks/blog-card/editor.js:268
+msgid "Description"
+msgstr "概要"
+
+#: build/editors.js:6 src/blocks/blog-card/editor.js:291
+msgid "Image"
+msgstr "画像"
+
+#: build/editors.js:6 src/blocks/blog-card/editor.js:229
+msgid "Delete image"
+msgstr "画像を削除"
+
+#: build/editors.js:6 src/blocks/blog-card/editor.js:236
+msgid "Add Image"
+msgstr "画像を追加"
+
+#: build/editors.js:6 src/blocks/blog-card/editor.js:308
+msgid "Image position"
+msgstr "画像の位置"
+
+#: build/editors.js:6 src/blocks/blog-card/editor.js:320
+msgid "Image Fit"
+msgstr "画像の収め方"
+
+#: build/editors.js:6 src/blocks/blog-card/editor.js:387
+msgid "Link URL"
+msgstr "リンク先URL"
+
+#: build/editors.js:6 src/blocks/blog-card/editor.js:400
+msgid "Load"
+msgstr "情報を取得"

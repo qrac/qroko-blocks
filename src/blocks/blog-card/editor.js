@@ -15,19 +15,19 @@ import classNames from "classnames"
 import "./editor.css"
 
 const imagePositionList = [
-  { label: "左", value: "left" },
-  { label: "右", value: "right" },
+  { label: __("Left", "qroko-blocks"), value: "left" },
+  { label: __("Right", "qroko-blocks"), value: "right" },
 ]
 
 const imageFitList = [
-  { label: "広げる", value: "cover" },
-  { label: "収める", value: "contain" },
+  { label: __("Cover", "qroko-blocks"), value: "cover" },
+  { label: __("Contain", "qroko-blocks"), value: "contain" },
 ]
 
 registerBlockType("qroko-blocks/blog-card", {
-  title: __("ブログカード", "qroko-blocks"),
+  title: __("Blog Card", "qroko-blocks"),
   description: __(
-    "カード型のリンクを作るブロック。リンク先URLからOpen Graphを取得した後に編集もできます。",
+    "Block to create a card link. You can also edit it after getting the Open Graph from the link URL.",
     "qroko-blocks"
   ),
   category: "qroko",
@@ -226,14 +226,14 @@ registerBlockType("qroko-blocks/blog-card", {
               }}
               className="button"
             >
-              {__("画像を削除", "qroko-blocks")}
+              {__("Delete image", "qroko-blocks")}
             </Button>
           </div>
         )
       } else {
         return (
           <Button onClick={openEvent} className="button">
-            {__("画像を追加", "qroko-blocks")}
+            {__("Add Image", "qroko-blocks")}
           </Button>
         )
       }
@@ -242,7 +242,7 @@ registerBlockType("qroko-blocks/blog-card", {
     return (
       <div className={classNames(className, "qroko-blocks-blog-card")}>
         <InspectorControls>
-          <PanelBody title={__("タイトル", "qroko-blocks")}>
+          <PanelBody title={__("Title", "qroko-blocks")}>
             <BaseControl>
               <TextareaControl
                 value={attributes.title}
@@ -252,7 +252,7 @@ registerBlockType("qroko-blocks/blog-card", {
               />
               <RangeControl
                 value={attributes.ogTitleCharacterCount}
-                label={__("取得文字数", "qroko-blocks")}
+                label={__("Number of characters", "qroko-blocks")}
                 min={1}
                 max={200}
                 initialPosition={50}
@@ -265,7 +265,7 @@ registerBlockType("qroko-blocks/blog-card", {
               />
             </BaseControl>
           </PanelBody>
-          <PanelBody title={__("概要", "qroko-blocks")}>
+          <PanelBody title={__("Description", "qroko-blocks")}>
             <BaseControl>
               <TextareaControl
                 value={attributes.description}
@@ -275,7 +275,7 @@ registerBlockType("qroko-blocks/blog-card", {
               />
               <RangeControl
                 value={attributes.ogDescriptionCharacterCount}
-                label={__("取得文字数", "qroko-blocks")}
+                label={__("Number of characters", "qroko-blocks")}
                 min={1}
                 max={200}
                 initialPosition={60}
@@ -288,7 +288,7 @@ registerBlockType("qroko-blocks/blog-card", {
               />
             </BaseControl>
           </PanelBody>
-          <PanelBody title={__("画像", "qroko-blocks")}>
+          <PanelBody title={__("Image", "qroko-blocks")}>
             <BaseControl>
               <MediaUpload
                 onSelect={(media) => {
@@ -305,7 +305,7 @@ registerBlockType("qroko-blocks/blog-card", {
             </BaseControl>
             <BaseControl>
               <RadioControl
-                label={__("画像位置", "qroko-blocks")}
+                label={__("Image position", "qroko-blocks")}
                 selected={attributes.imagePosition}
                 options={imagePositionList}
                 onChange={(option) => {
@@ -317,7 +317,7 @@ registerBlockType("qroko-blocks/blog-card", {
             </BaseControl>
             <BaseControl>
               <RadioControl
-                label={__("画像の収め方", "qroko-blocks")}
+                label={__("Image Fit", "qroko-blocks")}
                 selected={attributes.imageFit}
                 options={imageFitList}
                 onChange={(option) => {
@@ -384,7 +384,7 @@ registerBlockType("qroko-blocks/blog-card", {
           <div className="qroko-blocks-blog-card-columns is-padding is-gap is-bottom">
             <div className="qroko-blocks-blog-card-column is-flex-grow">
               <TextControl
-                label={__("リンク先URL", "qroko-blocks")}
+                label={__("Link URL", "qroko-blocks")}
                 value={attributes.url}
                 onChange={(content) => {
                   setAttributes({ url: content })
@@ -397,7 +397,7 @@ registerBlockType("qroko-blocks/blog-card", {
                 onClick={() => loadOpenGraph(attributes.url)}
                 className="button is-small"
               >
-                {__("情報を取得", "qroko-blocks")}
+                {__("Load", "qroko-blocks")}
               </Button>
             </div>
           </div>

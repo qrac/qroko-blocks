@@ -5,7 +5,9 @@
  * Description: Custom Blocks for headless WordPress
  * Author: qrac
  * Author URI: https://qrac.jp/
- * Version: 1.0.0
+ * Version: 1.0.1
+ * Text Domain: qroko-blocks
+ * Domain Path: /languages
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  *
@@ -21,7 +23,7 @@ defined( 'ABSPATH' ) || exit;
 //----------------------------------------------------
 
 function qroko_blocks_load_textdomain() {
-  load_plugin_textdomain( 'qroko-blocks', false, basename( __DIR__ ) . '/languages' );
+  load_plugin_textdomain( 'qroko-blocks', false, basename( dirname( __FILE__ ) ) . '/languages' );
 }
 add_action( 'init', 'qroko_blocks_load_textdomain' );
 
@@ -56,13 +58,17 @@ function qroko_blocks_register_block() {
     'editor_script' => 'qroko-blocks-editors'
   ));
 
-  // Setting Translations
-  if ( function_exists( 'wp_set_script_translations' ) ) {
-    wp_set_script_translations( 'qroko-blocks', 'qroko-blocks' );
-  }
-
 }
 add_action( 'init', 'qroko_blocks_register_block' );
+
+function qroko_blocks_script_translations() {
+  // Setting Translations
+  if ( function_exists( 'wp_set_script_translations' ) ) {
+    wp_set_script_translations( 'po', 'qroko-blocks',
+    plugin_dir_path( __FILE__ ) . 'languages/' );
+  }
+}
+add_action( 'init', 'qroko_blocks_script_translations' );
 
 //----------------------------------------------------
 // Setting: Gutenberg Front End

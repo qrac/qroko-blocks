@@ -1,0 +1,117 @@
+# Copyright (C) 2020 qrac
+# This file is distributed under the same license as the Qroko Blocks plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Qroko Blocks 1.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/qroko-blocks\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-07-10T09:24:49+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: qroko-blocks\n"
+
+#. Plugin Name of the plugin
+#: qroko-blocks.php:107
+msgid "Qroko Blocks"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://github.com/qrac/qroko-blocks/"
+msgstr ""
+
+#. Description of the plugin
+msgid "Custom Blocks for headless WordPress"
+msgstr ""
+
+#. Author of the plugin
+msgid "qrac"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://qrac.jp/"
+msgstr ""
+
+#: build/editors.js:6
+#: src/blocks/blog-card/editor.js:18
+msgid "Left"
+msgstr ""
+
+#: build/editors.js:6
+#: src/blocks/blog-card/editor.js:19
+msgid "Right"
+msgstr ""
+
+#: build/editors.js:6
+#: src/blocks/blog-card/editor.js:23
+msgid "Cover"
+msgstr ""
+
+#: build/editors.js:6
+#: src/blocks/blog-card/editor.js:24
+msgid "Contain"
+msgstr ""
+
+#: build/editors.js:6
+#: src/blocks/blog-card/editor.js:28
+msgid "Blog Card"
+msgstr ""
+
+#: build/editors.js:6
+#: src/blocks/blog-card/editor.js:29
+msgid "Block to create a card link. You can also edit it after getting the Open Graph from the link URL."
+msgstr ""
+
+#: build/editors.js:6
+#: src/blocks/blog-card/editor.js:245
+msgid "Title"
+msgstr ""
+
+#: build/editors.js:6
+#: src/blocks/blog-card/editor.js:255
+#: src/blocks/blog-card/editor.js:278
+msgid "Number of characters"
+msgstr ""
+
+#: build/editors.js:6
+#: src/blocks/blog-card/editor.js:268
+msgid "Description"
+msgstr ""
+
+#: build/editors.js:6
+#: src/blocks/blog-card/editor.js:291
+msgid "Image"
+msgstr ""
+
+#: build/editors.js:6
+#: src/blocks/blog-card/editor.js:229
+msgid "Delete image"
+msgstr ""
+
+#: build/editors.js:6
+#: src/blocks/blog-card/editor.js:236
+msgid "Add Image"
+msgstr ""
+
+#: build/editors.js:6
+#: src/blocks/blog-card/editor.js:308
+msgid "Image position"
+msgstr ""
+
+#: build/editors.js:6
+#: src/blocks/blog-card/editor.js:320
+msgid "Image Fit"
+msgstr ""
+
+#: build/editors.js:6
+#: src/blocks/blog-card/editor.js:387
+msgid "Link URL"
+msgstr ""
+
+#: build/editors.js:6
+#: src/blocks/blog-card/editor.js:400
+msgid "Load"
+msgstr ""
