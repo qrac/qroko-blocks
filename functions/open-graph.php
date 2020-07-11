@@ -228,7 +228,7 @@ function open_graph() {
   );
 
   // Debug: Chrome
-  //include 'ChromePhp.php';
+  //include '../debug/ChromePhp.php';
   //ChromePhp::log(json_encode($records));
 
   echo json_encode($records);
