@@ -36,7 +36,7 @@ $ npm run build
 
 - Plugin: Qroko Blocks - GNU General Public License v2.0 or late
 - Icon: [Bootstrap Icons](https://icons.getbootstrap.com/) - MIT
-- Open Graph: [Open Graph Protocol helper for PHP](https://github.com/scottmac/opengraph/blob/master/OpenGraph.php) - Apache 2.0 license
+- Open Graph: [Embed](https://github.com/oscarotero/Embed) - MIT
 - Image Fonts: [JetBrains Mono](https://www.jetbrains.com/lp/mono/) - Apache 2.0 license
 
 ## Credit
