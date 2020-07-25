@@ -1,4 +1,11 @@
 <?php
+/**
+ * Functions: Open Graph
+ *
+ * @package qroko-blocks
+ * @author qrac
+ * @license GPL-2.0+
+ */
 
 // Debug
 //require __DIR__ . '/../debug/ChromePhp.php';
