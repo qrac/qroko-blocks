@@ -58,6 +58,12 @@ function qroko_blocks_register_block() {
     'editor_script' => 'qroko-blocks-editors'
   ));
 
+  // Register Block: Compact Box
+  register_block_type( 'qroko-blocks/compact-box', array(
+    'editor_style' => 'qroko-blocks-editors',
+    'editor_script' => 'qroko-blocks-editors'
+  ));
+
   // Setting Translations
   if ( function_exists( 'wp_set_script_translations' ) ) {
     wp_set_script_translations( 'qroko-blocks-editors', 'qroko-blocks',
@@ -73,7 +79,10 @@ add_action( 'init', 'qroko_blocks_register_block' );
 
 function qroko_blocks_enqueue_fronts() {
   if (!is_admin()) {
-    if (has_block('qroko-blocks/blog-card')) {
+    if (
+      has_block('qroko-blocks/blog-card') ||
+      has_block('qroko-blocks/compact-box')
+    ) {
 
       // Enqueue CSS (Fronts)
       wp_enqueue_style(
