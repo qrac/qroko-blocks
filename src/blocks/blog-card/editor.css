@@ -41,6 +41,10 @@
   flex: none;
 }
 
+.qroko-blocks-blog-card-column.is-flex-none > .components-button.is-small {
+  padding: 0 8px;
+}
+
 .components-base-control.is-margin-bottom-none .components-base-control__field {
   margin-bottom: 0;
 }
