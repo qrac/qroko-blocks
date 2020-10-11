@@ -77,29 +77,23 @@ add_action('init', function() {
 
 add_action('wp_enqueue_scripts', function() {
   if (!is_admin()) {
-    if (
-      has_block('qroko-blocks/blog-card') ||
-      has_block('qroko-blocks/compact-box')
-    ) {
 
-      // Enqueue CSS (Fronts)
-      wp_enqueue_style(
-        'qroko-blocks-fronts',
-        plugins_url('build/fronts.css', __FILE__),
-        array(),
-        filemtime(plugin_dir_path(__FILE__) . 'build/fronts.css')
-      );
+    // Enqueue CSS (Fronts)
+    wp_enqueue_style(
+      'qroko-blocks-fronts',
+      plugins_url('build/fronts.css', __FILE__),
+      array(),
+      filemtime(plugin_dir_path(__FILE__) . 'build/fronts.css')
+    );
 
-      // Enqueue JavaScript (Fronts)
-      wp_enqueue_script(
-        'qroko-blocks-fronts',
-        plugins_url('build/fronts.js', __FILE__),
-        array(),
-        filemtime(plugin_dir_path(__FILE__) . 'build/fronts.js'),
-        true
-      );
-
-    }
+    // Enqueue JavaScript (Fronts)
+    wp_enqueue_script(
+      'qroko-blocks-fronts',
+      plugins_url('build/fronts.js', __FILE__),
+      array(),
+      filemtime(plugin_dir_path(__FILE__) . 'build/fronts.js'),
+      true
+    );
   }
 });
 
