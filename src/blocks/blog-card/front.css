@@ -1,8 +1,8 @@
 .qroko-blocks-blog-card {
   position: relative;
   display: block;
-  background-color: #fff;
-  border: 1px solid #e4e4e4;
+  background-color: var(--theme-bg-1, #ffffff);
+  border: 1px solid var(--theme-bg-3, #e4e4e4);
   border-radius: 4px;
   overflow: hidden;
 }
@@ -28,10 +28,6 @@
   align-items: flex-end;
 }
 
-.qroko-blocks-blog-card-columns:not(:last-child) {
-  border-bottom: 1px solid #e4e4e4;
-}
-
 .qroko-blocks-blog-card-columns.is-padding,
 .qroko-blocks-blog-card-column.is-padding {
   padding: 16px;
@@ -48,13 +44,6 @@
 
 .qroko-blocks-blog-card-column.is-flex-none {
   flex: none;
-}
-
-.qroko-blocks-blog-card-delete-image-button .icon {
-  flex: none;
-  width: 22px;
-  height: 22px;
-  fill: #fff;
 }
 
 .qroko-blocks-blog-card-image-container {
@@ -110,7 +99,7 @@
   display: block;
   width: 100%;
   margin: 0;
-  color: #292929;
+  color: var(--theme-tx-2, #292929);
   font-size: 16px;
   font-size: 1rem;
   font-weight: 700;
@@ -125,7 +114,7 @@
   display: block;
   width: 100%;
   margin: 0;
-  color: #6f6f6f;
+  color: var(--theme-tx-3, #6f6f6f);
   font-size: 12px;
   font-size: 0.75rem;
   font-weight: 400;
@@ -138,7 +127,7 @@
   display: block;
   width: 100%;
   margin: 0;
-  color: #6f6f6f;
+  color: var(--theme-tx-3, #6f6f6f);
   font-size: 12px;
   font-size: 0.75rem;
   font-weight: 400;
