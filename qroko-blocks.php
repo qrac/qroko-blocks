@@ -58,10 +58,10 @@ add_action('init', function() {
   ));
 
   // Register Block: Compact Box
-  register_block_type('qroko-blocks/compact-box', array(
+  /*register_block_type('qroko-blocks/compact-box', array(
     'editor_style' => 'qroko-blocks-editors',
     'editor_script' => 'qroko-blocks-editors'
-  ));
+  ));*/
 
   // Setting Translations
   if (function_exists('wp_set_script_translations')) {
