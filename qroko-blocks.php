@@ -16,68 +16,66 @@
  * @license GPL-2.0+
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 //----------------------------------------------------
 // Setting: Text Domain
 //----------------------------------------------------
 
-function qroko_blocks_load_textdomain() {
-  load_plugin_textdomain( 'qroko-blocks', false, basename( dirname( __FILE__ ) ) . '/languages' );
-}
-add_action( 'init', 'qroko_blocks_load_textdomain' );
+add_action('init', function() {
+  load_plugin_textdomain('qroko-blocks', false, basename(dirname( __FILE__ )) . '/languages');
+});
 
 //----------------------------------------------------
 // Setting: Gutenberg Blocks
 //----------------------------------------------------
 
-function qroko_blocks_register_block() {
+add_action('init', function() {
 
   // Automatically load dependencies and version
-  $editors_asset_file = include( plugin_dir_path( __FILE__ ) . 'build/editors.asset.php');
+  $editors_asset_file = include(plugin_dir_path(__FILE__) . 'build/editors.asset.php');
 
   // Register CSS (Editors)
   wp_register_style(
     'qroko-blocks-editors',
-    plugins_url( 'build/editors.css', __FILE__ ),
-    array( ),
-    filemtime( plugin_dir_path( __FILE__ ) . 'build/editors.css' )
+    plugins_url('build/editors.css', __FILE__),
+    array(),
+    filemtime(plugin_dir_path(__FILE__) . 'build/editors.css')
   );
 
   // Register JavaScript (Editors)
   wp_register_script(
     'qroko-blocks-editors',
-    plugins_url( 'build/editors.js', __FILE__ ),
+    plugins_url('build/editors.js', __FILE__),
     $editors_asset_file['dependencies'],
     $editors_asset_file['version']
   );
 
   // Register Block: Blog Card
-  register_block_type( 'qroko-blocks/blog-card', array(
+  register_block_type('qroko-blocks/blog-card', array(
     'editor_style' => 'qroko-blocks-editors',
     'editor_script' => 'qroko-blocks-editors'
   ));
 
   // Register Block: Compact Box
-  register_block_type( 'qroko-blocks/compact-box', array(
+  register_block_type('qroko-blocks/compact-box', array(
     'editor_style' => 'qroko-blocks-editors',
     'editor_script' => 'qroko-blocks-editors'
   ));
 
   // Setting Translations
-  if ( function_exists( 'wp_set_script_translations' ) ) {
-    wp_set_script_translations( 'qroko-blocks-editors', 'qroko-blocks',
-    plugin_dir_path( __FILE__ ) . 'languages/' );
+  if (function_exists('wp_set_script_translations')) {
+    wp_set_script_translations('qroko-blocks-editors', 'qroko-blocks',
+    plugin_dir_path(__FILE__) . 'languages/');
   }
 
-}
-add_action( 'init', 'qroko_blocks_register_block' );
+});
 
 //----------------------------------------------------
 // Setting: Gutenberg Front End
 //----------------------------------------------------
 
-function qroko_blocks_enqueue_fronts() {
+add_action('wp_enqueue_scripts', function() {
   if (!is_admin()) {
     if (
       has_block('qroko-blocks/blog-card') ||
@@ -87,30 +85,29 @@ function qroko_blocks_enqueue_fronts() {
       // Enqueue CSS (Fronts)
       wp_enqueue_style(
         'qroko-blocks-fronts',
-        plugins_url( 'build/fronts.css', __FILE__ ),
-        array( ),
-        filemtime( plugin_dir_path( __FILE__ ) . 'build/fronts.css' )
+        plugins_url('build/fronts.css', __FILE__),
+        array(),
+        filemtime(plugin_dir_path(__FILE__) . 'build/fronts.css')
       );
 
       // Enqueue JavaScript (Fronts)
       wp_enqueue_script(
         'qroko-blocks-fronts',
-        plugins_url( 'build/fronts.js', __FILE__ ),
-        array( ),
-        filemtime( plugin_dir_path( __FILE__ ) . 'build/fronts.js' ),
+        plugins_url('build/fronts.js', __FILE__),
+        array(),
+        filemtime(plugin_dir_path(__FILE__) . 'build/fronts.js'),
         true
       );
 
     }
   }
-}
-add_action('wp_enqueue_scripts', 'qroko_blocks_enqueue_fronts');
+});
 
 //----------------------------------------------------
 // Setting: Gutenberg Blocks Categories
 //----------------------------------------------------
 
-function qroko_blocks_register_categories( $categories, $post ) {
+add_filter('block_categories', function($categories, $post) {
   return array_merge(
     $categories,
     array(
@@ -121,11 +118,10 @@ function qroko_blocks_register_categories( $categories, $post ) {
     )
   );
   return $categories;
-}
-add_filter( 'block_categories', 'qroko_blocks_register_categories', 10, 2 );
+}, 10, 2);
 
 //----------------------------------------------------
 // Setting: Include Functions
 //----------------------------------------------------
 
-require_once( 'functions/open-graph.php' );
+require_once('functions/open-graph.php');
