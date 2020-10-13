@@ -5,7 +5,7 @@
  * Description: Custom Blocks for headless WordPress
  * Author: qrac
  * Author URI: https://qrac.jp/
- * Version: 1.0.6
+ * Version: 1.1.0
  * Text Domain: qroko-blocks
  * Domain Path: /languages
  * License: GPL2+
@@ -50,6 +50,12 @@ add_action('init', function() {
     $editors_asset_file['dependencies'],
     $editors_asset_file['version']
   );
+
+  // Register Block: Section
+  register_block_type('qroko-blocks/section', array(
+    'editor_style' => 'qroko-blocks-editors',
+    'editor_script' => 'qroko-blocks-editors'
+  ));
 
   // Register Block: Blog Card
   register_block_type('qroko-blocks/blog-card', array(

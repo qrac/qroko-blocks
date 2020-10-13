@@ -1,0 +1,39 @@
+.qroko-blocks-section {
+  position: relative;
+}
+
+.qroko-blocks-section-background {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: calc(100vw - var(--scrollbar-width, 0px));
+  height: 100%;
+  background-color: var(
+    --qroko-blocks-section-background-color,
+    var(--theme-bg-2, #f2f2f2)
+  );
+  background-image: var(--qroko-blocks-section-background-image, none);
+  background-size: var(--qroko-blocks-section-background-size, cover);
+  background-position: var(--qroko-blocks-section-background-position, center);
+  opacity: var(--qroko-blocks-section-background-opacity, 1);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.qroko-blocks-section-inner {
+  position: relative;
+  max-width: var(--qroko-blocks-section-inner-max-width, none);
+  margin: var(--qroko-blocks-section-inner-margin, 0 auto);
+  padding-top: var(--qroko-blocks-section-inner-padding-top, 32px);
+  padding-right: var(--qroko-blocks-section-inner-padding-right, 0);
+  padding-bottom: var(--qroko-blocks-section-inner-padding-bottom, 32px);
+  padding-left: var(--qroko-blocks-section-inner-padding-left, 0);
+  z-index: 2;
+}
+
+.qroko-blocks-section-image-preview {
+  height: auto;
+  margin-bottom: 16px;
+  padding: 0;
+  border: 1px solid var(--theme-bg-3, #e4e4e4);
+}
