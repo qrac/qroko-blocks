@@ -37,3 +37,17 @@
   padding: 0;
   border: 1px solid var(--theme-bg-3, #e4e4e4);
 }
+
+.qroko-blocks-section-inner
+  > .block-editor-inner-blocks
+  > .block-editor-block-list__layout
+  > *:first-child {
+  margin-top: 0;
+}
+
+.qroko-blocks-section-inner
+  > .block-editor-inner-blocks
+  > .block-editor-block-list__layout
+  > *:last-child {
+  margin-bottom: 0;
+}
