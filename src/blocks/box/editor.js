@@ -92,6 +92,33 @@ registerBlockType("qroko-blocks/box", {
       type: "number",
       default: 100,
     },
+    shadowTrigger: {
+      type: "boolean",
+      default: false,
+    },
+    shadowX: {
+      type: "number",
+      default: 0,
+    },
+    shadowY: {
+      type: "number",
+      default: 8,
+    },
+    shadowBlur: {
+      type: "number",
+      default: 8,
+    },
+    shadowSpread: {
+      type: "number",
+      default: -4,
+    },
+    shadowColor: {
+      type: "string",
+    },
+    shadowOpacity: {
+      type: "number",
+      default: 12,
+    },
     innerPaddingTop: {
       type: "number",
       default: 16,
@@ -161,6 +188,14 @@ registerBlockType("qroko-blocks/box", {
       "--qroko-blocks-box-border-opacity": calcOpacity(
         attributes.borderOpacity
       ),
+      "--qroko-blocks-box-shadow-x": attributes.shadowX + "px",
+      "--qroko-blocks-box-shadow-y": attributes.shadowY + "px",
+      "--qroko-blocks-box-shadow-blur": attributes.shadowBlur + "px",
+      "--qroko-blocks-box-shadow-spread": attributes.shadowSpread + "px",
+      "--qroko-blocks-box-shadow-color": attributes.shadowColor,
+      "--qroko-blocks-box-shadow-opacity": calcOpacity(
+        attributes.shadowOpacity
+      ),
       "--qroko-blocks-box-inner-padding-top": calcPadding(
         attributes.innerPaddingTop
       ),
@@ -211,6 +246,19 @@ registerBlockType("qroko-blocks/box", {
                 onChange={(option) => {
                   setAttributes({
                     position: option,
+                  })
+                }}
+              />
+              <RangeControl
+                value={attributes.radius}
+                label={__("Round Shape (px)", "qroko-blocks")}
+                min={0}
+                max={40}
+                initialPosition={4}
+                allowReset
+                onChange={(value) => {
+                  setAttributes({
+                    radius: !value ? 4 : value,
                   })
                 }}
               />
@@ -317,6 +365,98 @@ registerBlockType("qroko-blocks/box", {
               />
             </BaseControl>
           </PanelBody>
+          <PanelBody title={__("Shadow", "qroko-blocks")}>
+            <BaseControl>
+              <ToggleControl
+                label={__("Use the Shadow", "qroko-blocks")}
+                onChange={() => {
+                  setAttributes({
+                    shadowTrigger: !attributes.shadowTrigger,
+                  })
+                }}
+                checked={attributes.shadowTrigger}
+              />
+            </BaseControl>
+            <BaseControl>
+              <RangeControl
+                value={attributes.shadowX}
+                label={__("X Offset (px)", "qroko-blocks")}
+                min={-40}
+                max={40}
+                initialPosition={0}
+                allowReset
+                onChange={(value) => {
+                  setAttributes({
+                    shadowX: !value ? 0 : value,
+                  })
+                }}
+              />
+              <RangeControl
+                value={attributes.shadowY}
+                label={__("Y Offset (px)", "qroko-blocks")}
+                min={-40}
+                max={40}
+                initialPosition={8}
+                allowReset
+                onChange={(value) => {
+                  setAttributes({
+                    shadowY: !value ? 8 : value,
+                  })
+                }}
+              />
+              <RangeControl
+                value={attributes.shadowBlur}
+                label={__("Blur (px)", "qroko-blocks")}
+                min={0}
+                max={40}
+                initialPosition={8}
+                allowReset
+                onChange={(value) => {
+                  setAttributes({
+                    shadowBlur: !value ? 8 : value,
+                  })
+                }}
+              />
+              <RangeControl
+                value={attributes.shadowSpread}
+                label={__("Spread (px)", "qroko-blocks")}
+                min={-40}
+                max={40}
+                initialPosition={-4}
+                allowReset
+                onChange={(value) => {
+                  setAttributes({
+                    shadowSpread: !value ? -4 : value,
+                  })
+                }}
+              />
+            </BaseControl>
+            <BaseControl label={__("Color", "qroko-blocks")}>
+              <ColorPalette
+                value={attributes.shadowColor}
+                onChange={(value) =>
+                  setAttributes({
+                    shadowColor: value,
+                  })
+                }
+              />
+            </BaseControl>
+            <BaseControl>
+              <RangeControl
+                value={attributes.shadowOpacity}
+                label={__("Opacity", "qroko-blocks")}
+                min={0}
+                max={100}
+                initialPosition={12}
+                allowReset
+                onChange={(value) => {
+                  setAttributes({
+                    shadowOpacity: !value ? 12 : value,
+                  })
+                }}
+              />
+            </BaseControl>
+          </PanelBody>
           <PanelBody title={__("Inner", "qroko-blocks")}>
             <BaseControl>
               <RangeControl
@@ -380,6 +520,9 @@ registerBlockType("qroko-blocks/box", {
         {attributes.borderTrigger && (
           <div className="qroko-blocks-box-border"></div>
         )}
+        {attributes.shadowTrigger && (
+          <div className="qroko-blocks-box-shadow"></div>
+        )}
         <div className="qroko-blocks-box-inner">
           <InnerBlocks />
         </div>
@@ -438,6 +581,14 @@ registerBlockType("qroko-blocks/box", {
       "--qroko-blocks-box-border-opacity": calcOpacity(
         attributes.borderOpacity
       ),
+      "--qroko-blocks-box-shadow-x": attributes.shadowX + "px",
+      "--qroko-blocks-box-shadow-y": attributes.shadowY + "px",
+      "--qroko-blocks-box-shadow-blur": attributes.shadowBlur + "px",
+      "--qroko-blocks-box-shadow-spread": attributes.shadowSpread + "px",
+      "--qroko-blocks-box-shadow-color": attributes.shadowColor,
+      "--qroko-blocks-box-shadow-opacity": calcOpacity(
+        attributes.shadowOpacity
+      ),
       "--qroko-blocks-box-inner-padding-top": calcPadding(
         attributes.innerPaddingTop
       ),
@@ -461,6 +612,9 @@ registerBlockType("qroko-blocks/box", {
         )}
         {attributes.borderTrigger && (
           <div className="qroko-blocks-box-border"></div>
+        )}
+        {attributes.shadowTrigger && (
+          <div className="qroko-blocks-box-shadow"></div>
         )}
         <div className="qroko-blocks-box-inner">
           <InnerBlocks.Content />
