@@ -1,0 +1,47 @@
+.qroko-blocks-box {
+  position: relative;
+  max-width: var(--qroko-blocks-box-max-width, none);
+  margin-right: var(--qroko-blocks-box-margin-right, auto);
+  margin-left: var(--qroko-blocks-box-margin-left, auto);
+}
+
+.qroko-blocks-box-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(
+    --qroko-blocks-box-background-color,
+    var(--theme-bg-2, #f2f2f2)
+  );
+  border-radius: var(--qroko-blocks-box-radius, 4px);
+  opacity: var(--qroko-blocks-box-background-opacity, 1);
+  z-index: 1;
+}
+
+.qroko-blocks-box-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-width: var(--qroko-blocks-box-border-width, 1px);
+  border-style: var(--qroko-blocks-box-border-style, solid);
+  border-color: var(
+    --qroko-blocks-box-border-color,
+    var(--theme-bg-3, #e4e4e4)
+  );
+  border-radius: var(--qroko-blocks-box-radius, 4px);
+  opacity: var(--qroko-blocks-box-border-opacity, 1);
+  z-index: 2;
+}
+
+.qroko-blocks-box-inner {
+  position: relative;
+  padding-top: var(--qroko-blocks-box-inner-padding-top, 17px);
+  padding-right: var(--qroko-blocks-box-inner-padding-right, 17px);
+  padding-bottom: var(--qroko-blocks-box-inner-padding-bottom, 17px);
+  padding-left: var(--qroko-blocks-box-inner-padding-left, 17px);
+  z-index: 3;
+}

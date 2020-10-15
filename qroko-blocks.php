@@ -57,6 +57,12 @@ add_action('init', function() {
     'editor_script' => 'qroko-blocks-editors'
   ));
 
+  // Register Block: Box
+  register_block_type('qroko-blocks/box', array(
+    'editor_style' => 'qroko-blocks-editors',
+    'editor_script' => 'qroko-blocks-editors'
+  ));
+
   // Register Block: Blog Card
   register_block_type('qroko-blocks/blog-card', array(
     'editor_style' => 'qroko-blocks-editors',
