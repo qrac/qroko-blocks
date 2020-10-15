@@ -4,7 +4,7 @@ Donate link: https://wordpress.org/plugins/qroko-blocks/
 Tags: qroko, gutenberg, blocks, block, blog, card, link
 Requires at least: 5.4
 Tested up to: 5.5
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -25,6 +25,7 @@ The motif is a kabuki kuroko, which will play an active role offstage in your we
 == Detail ==
 
 * Section
+* Box
 * Blog Card
 
 == Frequently Asked Questions ==
@@ -39,8 +40,14 @@ Yes, you can use it with any theme that has Gutenberg enabled.
 2. Blog Card (Front)
 3. Section (Editor)
 4. Section (Front)
+5. Box (Editor)
+6. Box (Front)
 
 == Changelog ==
+
+= 1.2.0 =
+* Add Box Block
+* Fix Section Block: Editor CSS
 
 = 1.1.0 =
 * Add Section Block
