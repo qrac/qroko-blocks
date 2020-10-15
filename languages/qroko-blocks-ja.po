@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qroko Blocks 1.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/qroko-blocks\n"
-"POT-Creation-Date: 2020-10-15T12:29:33+00:00\n"
-"PO-Revision-Date: 2020-10-15 21:39+0900\n"
+"POT-Creation-Date: 2020-10-15T15:04:38+00:00\n"
+"PO-Revision-Date: 2020-10-16 00:08+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. Plugin Name of the plugin
-#: qroko-blocks.php:116
+#: qroko-blocks.php:122
 msgid "Qroko Blocks"
 msgstr "Qroko Blocks"
 
@@ -37,12 +37,14 @@ msgstr "qrac"
 msgid "https://qrac.jp/"
 msgstr "https://qrac.jp/"
 
-#: build/editors.js:193 build/editors.js:606 src/blocks/blog-card/editor.js:18
+#: build/editors.js:193 build/editors.js:606 build/editors.js:1060
+#: src/blocks/blog-card/editor.js:18 src/blocks/box/editor.js:22
 #: src/blocks/compact-box/editor.js:21 src/blocks/section/editor.js:23
 msgid "Left"
 msgstr "左"
 
-#: build/editors.js:196 build/editors.js:609 src/blocks/blog-card/editor.js:19
+#: build/editors.js:196 build/editors.js:609 build/editors.js:1063
+#: src/blocks/blog-card/editor.js:19 src/blocks/box/editor.js:23
 #: src/blocks/compact-box/editor.js:22 src/blocks/section/editor.js:24
 msgid "Right"
 msgstr "右"
@@ -67,13 +69,13 @@ msgstr ""
 "カード型のリンクを作るブロック。リンク先URLからOpen Graphを取得した後に編集も"
 "できます。"
 
-#: build/editors.js:389 build/editors.js:730 src/blocks/blog-card/editor.js:229
-#: src/blocks/section/editor.js:153
+#: build/editors.js:389 build/editors.js:1184
+#: src/blocks/blog-card/editor.js:229 src/blocks/section/editor.js:153
 msgid "Delete image"
 msgstr "画像を削除"
 
-#: build/editors.js:394 build/editors.js:735 src/blocks/blog-card/editor.js:236
-#: src/blocks/section/editor.js:160
+#: build/editors.js:394 build/editors.js:1189
+#: src/blocks/blog-card/editor.js:236 src/blocks/section/editor.js:160
 msgid "Add Image"
 msgstr "画像を追加"
 
@@ -91,8 +93,8 @@ msgstr "取得文字数"
 msgid "Description"
 msgstr "概要"
 
-#: build/editors.js:443 build/editors.js:754 src/blocks/blog-card/editor.js:291
-#: src/blocks/section/editor.js:183
+#: build/editors.js:443 build/editors.js:1208
+#: src/blocks/blog-card/editor.js:291 src/blocks/section/editor.js:183
 msgid "Image"
 msgstr "画像"
 
@@ -112,61 +114,123 @@ msgstr "リンク先URL"
 msgid "Load"
 msgstr "情報を取得"
 
-#: build/editors.js:603 src/blocks/section/editor.js:22
+#: build/editors.js:603 build/editors.js:1057 src/blocks/box/editor.js:21
+#: src/blocks/section/editor.js:22
 msgid "Center"
 msgstr "中央"
 
-#: build/editors.js:613 src/blocks/section/editor.js:28
-msgid "Section"
-msgstr "セクション"
+#: build/editors.js:613 src/blocks/box/editor.js:27
+msgid "Solid"
+msgstr "ソリッド"
 
-#: build/editors.js:614 src/blocks/section/editor.js:29
-msgid "You can set up full-width sections and place content inside."
-msgstr "全幅のセクションを設定し、内側にコンテンツを設置できます。"
+#: build/editors.js:616 src/blocks/box/editor.js:28
+msgid "Dashed"
+msgstr "ダッシュ"
 
-#: build/editors.js:743 src/blocks/section/editor.js:172
-msgid "Background"
-msgstr "背景"
+#: build/editors.js:619 src/blocks/box/editor.js:29
+msgid "Dotted"
+msgstr "ドット"
 
-#: build/editors.js:745 src/blocks/section/editor.js:173
-msgid "Color"
-msgstr "色"
+#: build/editors.js:622 src/blocks/box/editor.js:30
+msgid "Double"
+msgstr "ダブル"
 
-#: build/editors.js:770 src/blocks/section/editor.js:201
-msgid "Opacity"
-msgstr "不透明度"
+#: build/editors.js:626 src/blocks/box/editor.js:34
+msgid "Box"
+msgstr "ボックス"
 
-#: build/editors.js:781 src/blocks/section/editor.js:214
-msgid "Inner"
-msgstr "内側"
+#: build/editors.js:627 src/blocks/box/editor.js:35
+msgid "You can set up decorative boxes and place content inside."
+msgstr "装飾用のボックスを設定し、内側にコンテンツを設置できます。"
 
-#: build/editors.js:783 src/blocks/section/editor.js:217
+#: build/editors.js:767 src/blocks/box/editor.js:183
+msgid "Basic Settings"
+msgstr "基本設定"
+
+#: build/editors.js:769 build/editors.js:1237 src/blocks/box/editor.js:186
+#: src/blocks/section/editor.js:217
 msgid "Use the Max Width"
 msgstr "最大幅を使う"
 
-#: build/editors.js:792 src/blocks/section/editor.js:227
+#: build/editors.js:778 build/editors.js:1246 src/blocks/box/editor.js:196
+#: src/blocks/section/editor.js:227
 msgid "Max Width (px)"
 msgstr "最大幅（ピクセル）"
 
-#: build/editors.js:803 src/blocks/section/editor.js:239
+#: build/editors.js:789 build/editors.js:1257 src/blocks/box/editor.js:208
+#: src/blocks/section/editor.js:239
 msgid "Position"
 msgstr "位置"
 
-#: build/editors.js:813 src/blocks/section/editor.js:250
+#: build/editors.js:798 build/editors.js:1197 src/blocks/box/editor.js:219
+#: src/blocks/section/editor.js:172
+msgid "Background"
+msgstr "背景"
+
+#: build/editors.js:800 src/blocks/box/editor.js:222
+msgid "Use the Background"
+msgstr "背景を使用する"
+
+#: build/editors.js:808 build/editors.js:860 build/editors.js:1199
+#: src/blocks/box/editor.js:231 src/blocks/box/editor.js:294
+#: src/blocks/section/editor.js:173
+msgid "Color"
+msgstr "色"
+
+#: build/editors.js:818 build/editors.js:870 build/editors.js:1224
+#: src/blocks/box/editor.js:244 src/blocks/box/editor.js:307
+#: src/blocks/section/editor.js:201
+msgid "Opacity"
+msgstr "不透明度"
+
+#: build/editors.js:829 src/blocks/box/editor.js:257
+msgid "Border"
+msgstr "枠線"
+
+#: build/editors.js:831 src/blocks/box/editor.js:260
+msgid "Use the Border"
+msgstr "枠線を使う"
+
+#: build/editors.js:840 src/blocks/box/editor.js:272
+msgid "Width"
+msgstr "幅"
+
+#: build/editors.js:851 src/blocks/box/editor.js:284
+msgid "Style"
+msgstr "スタイル"
+
+#: build/editors.js:881 build/editors.js:1235 src/blocks/box/editor.js:320
+#: src/blocks/section/editor.js:214
+msgid "Inner"
+msgstr "内側"
+
+#: build/editors.js:884 build/editors.js:1267 src/blocks/box/editor.js:324
+#: src/blocks/section/editor.js:250
 msgid "Padding Top (px)"
 msgstr "上の余白（ピクセル）"
 
-#: build/editors.js:825 src/blocks/section/editor.js:263
+#: build/editors.js:896 build/editors.js:1279 src/blocks/box/editor.js:337
+#: src/blocks/section/editor.js:263
 msgid "Padding Right (px)"
 msgstr "右の余白（ピクセル）"
 
-#: build/editors.js:837 src/blocks/section/editor.js:276
+#: build/editors.js:908 build/editors.js:1291 src/blocks/box/editor.js:350
+#: src/blocks/section/editor.js:276
 msgid "Padding Bottom (px)"
 msgstr "下の余白（ピクセル）"
 
-#: build/editors.js:849 src/blocks/section/editor.js:289
+#: build/editors.js:920 build/editors.js:1303 src/blocks/box/editor.js:363
+#: src/blocks/section/editor.js:289
 msgid "Padding Left (px)"
 msgstr "左の余白（ピクセル）"
+
+#: build/editors.js:1067 src/blocks/section/editor.js:28
+msgid "Section"
+msgstr "セクション"
+
+#: build/editors.js:1068 src/blocks/section/editor.js:29
+msgid "You can set up full-width sections and place content inside."
+msgstr "全幅のセクションを設定し、内側にコンテンツを設置できます。"
 
 #: src/blocks/compact-box/editor.js:26
 msgid "Compact Box"

@@ -9,13 +9,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-10-15T12:29:33+00:00\n"
+"POT-Creation-Date: 2020-10-15T15:04:38+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: qroko-blocks\n"
 
 #. Plugin Name of the plugin
-#: qroko-blocks.php:116
+#: qroko-blocks.php:122
 msgid "Qroko Blocks"
 msgstr ""
 
@@ -37,7 +37,9 @@ msgstr ""
 
 #: build/editors.js:193
 #: build/editors.js:606
+#: build/editors.js:1060
 #: src/blocks/blog-card/editor.js:18
+#: src/blocks/box/editor.js:22
 #: src/blocks/compact-box/editor.js:21
 #: src/blocks/section/editor.js:23
 msgid "Left"
@@ -45,7 +47,9 @@ msgstr ""
 
 #: build/editors.js:196
 #: build/editors.js:609
+#: build/editors.js:1063
 #: src/blocks/blog-card/editor.js:19
+#: src/blocks/box/editor.js:23
 #: src/blocks/compact-box/editor.js:22
 #: src/blocks/section/editor.js:24
 msgid "Right"
@@ -72,14 +76,14 @@ msgid "Block to create a card link. You can also edit it after getting the Open 
 msgstr ""
 
 #: build/editors.js:389
-#: build/editors.js:730
+#: build/editors.js:1184
 #: src/blocks/blog-card/editor.js:229
 #: src/blocks/section/editor.js:153
 msgid "Delete image"
 msgstr ""
 
 #: build/editors.js:394
-#: build/editors.js:735
+#: build/editors.js:1189
 #: src/blocks/blog-card/editor.js:236
 #: src/blocks/section/editor.js:160
 msgid "Add Image"
@@ -104,7 +108,7 @@ msgid "Description"
 msgstr ""
 
 #: build/editors.js:443
-#: build/editors.js:754
+#: build/editors.js:1208
 #: src/blocks/blog-card/editor.js:291
 #: src/blocks/section/editor.js:183
 msgid "Image"
@@ -131,73 +135,161 @@ msgid "Load"
 msgstr ""
 
 #: build/editors.js:603
+#: build/editors.js:1057
+#: src/blocks/box/editor.js:21
 #: src/blocks/section/editor.js:22
 msgid "Center"
 msgstr ""
 
 #: build/editors.js:613
-#: src/blocks/section/editor.js:28
-msgid "Section"
+#: src/blocks/box/editor.js:27
+msgid "Solid"
 msgstr ""
 
-#: build/editors.js:614
-#: src/blocks/section/editor.js:29
-msgid "You can set up full-width sections and place content inside."
+#: build/editors.js:616
+#: src/blocks/box/editor.js:28
+msgid "Dashed"
 msgstr ""
 
-#: build/editors.js:743
-#: src/blocks/section/editor.js:172
-msgid "Background"
+#: build/editors.js:619
+#: src/blocks/box/editor.js:29
+msgid "Dotted"
 msgstr ""
 
-#: build/editors.js:745
-#: src/blocks/section/editor.js:173
-msgid "Color"
+#: build/editors.js:622
+#: src/blocks/box/editor.js:30
+msgid "Double"
 msgstr ""
 
-#: build/editors.js:770
-#: src/blocks/section/editor.js:201
-msgid "Opacity"
+#: build/editors.js:626
+#: src/blocks/box/editor.js:34
+msgid "Box"
 msgstr ""
 
-#: build/editors.js:781
-#: src/blocks/section/editor.js:214
-msgid "Inner"
+#: build/editors.js:627
+#: src/blocks/box/editor.js:35
+msgid "You can set up decorative boxes and place content inside."
 msgstr ""
 
-#: build/editors.js:783
+#: build/editors.js:767
+#: src/blocks/box/editor.js:183
+msgid "Basic Settings"
+msgstr ""
+
+#: build/editors.js:769
+#: build/editors.js:1237
+#: src/blocks/box/editor.js:186
 #: src/blocks/section/editor.js:217
 msgid "Use the Max Width"
 msgstr ""
 
-#: build/editors.js:792
+#: build/editors.js:778
+#: build/editors.js:1246
+#: src/blocks/box/editor.js:196
 #: src/blocks/section/editor.js:227
 msgid "Max Width (px)"
 msgstr ""
 
-#: build/editors.js:803
+#: build/editors.js:789
+#: build/editors.js:1257
+#: src/blocks/box/editor.js:208
 #: src/blocks/section/editor.js:239
 msgid "Position"
 msgstr ""
 
-#: build/editors.js:813
+#: build/editors.js:798
+#: build/editors.js:1197
+#: src/blocks/box/editor.js:219
+#: src/blocks/section/editor.js:172
+msgid "Background"
+msgstr ""
+
+#: build/editors.js:800
+#: src/blocks/box/editor.js:222
+msgid "Use the Background"
+msgstr ""
+
+#: build/editors.js:808
+#: build/editors.js:860
+#: build/editors.js:1199
+#: src/blocks/box/editor.js:231
+#: src/blocks/box/editor.js:294
+#: src/blocks/section/editor.js:173
+msgid "Color"
+msgstr ""
+
+#: build/editors.js:818
+#: build/editors.js:870
+#: build/editors.js:1224
+#: src/blocks/box/editor.js:244
+#: src/blocks/box/editor.js:307
+#: src/blocks/section/editor.js:201
+msgid "Opacity"
+msgstr ""
+
+#: build/editors.js:829
+#: src/blocks/box/editor.js:257
+msgid "Border"
+msgstr ""
+
+#: build/editors.js:831
+#: src/blocks/box/editor.js:260
+msgid "Use the Border"
+msgstr ""
+
+#: build/editors.js:840
+#: src/blocks/box/editor.js:272
+msgid "Width"
+msgstr ""
+
+#: build/editors.js:851
+#: src/blocks/box/editor.js:284
+msgid "Style"
+msgstr ""
+
+#: build/editors.js:881
+#: build/editors.js:1235
+#: src/blocks/box/editor.js:320
+#: src/blocks/section/editor.js:214
+msgid "Inner"
+msgstr ""
+
+#: build/editors.js:884
+#: build/editors.js:1267
+#: src/blocks/box/editor.js:324
 #: src/blocks/section/editor.js:250
 msgid "Padding Top (px)"
 msgstr ""
 
-#: build/editors.js:825
+#: build/editors.js:896
+#: build/editors.js:1279
+#: src/blocks/box/editor.js:337
 #: src/blocks/section/editor.js:263
 msgid "Padding Right (px)"
 msgstr ""
 
-#: build/editors.js:837
+#: build/editors.js:908
+#: build/editors.js:1291
+#: src/blocks/box/editor.js:350
 #: src/blocks/section/editor.js:276
 msgid "Padding Bottom (px)"
 msgstr ""
 
-#: build/editors.js:849
+#: build/editors.js:920
+#: build/editors.js:1303
+#: src/blocks/box/editor.js:363
 #: src/blocks/section/editor.js:289
 msgid "Padding Left (px)"
+msgstr ""
+
+#: build/editors.js:1067
+#: src/blocks/section/editor.js:28
+msgid "Section"
+msgstr ""
+
+#: build/editors.js:1068
+#: src/blocks/section/editor.js:29
+msgid "You can set up full-width sections and place content inside."
 msgstr ""
 
 #: src/blocks/compact-box/editor.js:26
