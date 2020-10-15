@@ -2,20 +2,20 @@
 # This file is distributed under the same license as the Qroko Blocks plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Qroko Blocks 1.0.1\n"
+"Project-Id-Version: Qroko Blocks 1.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/qroko-blocks\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-07-10T09:24:49+00:00\n"
+"POT-Creation-Date: 2020-10-15T12:29:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: qroko-blocks\n"
 
 #. Plugin Name of the plugin
-#: qroko-blocks.php:107
+#: qroko-blocks.php:116
 msgid "Qroko Blocks"
 msgstr ""
 
@@ -35,83 +35,183 @@ msgstr ""
 msgid "https://qrac.jp/"
 msgstr ""
 
-#: build/editors.js:6
+#: build/editors.js:193
+#: build/editors.js:606
 #: src/blocks/blog-card/editor.js:18
+#: src/blocks/compact-box/editor.js:21
+#: src/blocks/section/editor.js:23
 msgid "Left"
 msgstr ""
 
-#: build/editors.js:6
+#: build/editors.js:196
+#: build/editors.js:609
 #: src/blocks/blog-card/editor.js:19
+#: src/blocks/compact-box/editor.js:22
+#: src/blocks/section/editor.js:24
 msgid "Right"
 msgstr ""
 
-#: build/editors.js:6
+#: build/editors.js:200
 #: src/blocks/blog-card/editor.js:23
 msgid "Cover"
 msgstr ""
 
-#: build/editors.js:6
+#: build/editors.js:203
 #: src/blocks/blog-card/editor.js:24
 msgid "Contain"
 msgstr ""
 
-#: build/editors.js:6
+#: build/editors.js:207
 #: src/blocks/blog-card/editor.js:28
 msgid "Blog Card"
 msgstr ""
 
-#: build/editors.js:6
+#: build/editors.js:208
 #: src/blocks/blog-card/editor.js:29
 msgid "Block to create a card link. You can also edit it after getting the Open Graph from the link URL."
 msgstr ""
 
-#: build/editors.js:6
+#: build/editors.js:389
+#: build/editors.js:730
+#: src/blocks/blog-card/editor.js:229
+#: src/blocks/section/editor.js:153
+msgid "Delete image"
+msgstr ""
+
+#: build/editors.js:394
+#: build/editors.js:735
+#: src/blocks/blog-card/editor.js:236
+#: src/blocks/section/editor.js:160
+msgid "Add Image"
+msgstr ""
+
+#: build/editors.js:401
 #: src/blocks/blog-card/editor.js:245
+#: src/blocks/compact-box/editor.js:74
 msgid "Title"
 msgstr ""
 
-#: build/editors.js:6
+#: build/editors.js:411
+#: build/editors.js:432
 #: src/blocks/blog-card/editor.js:255
 #: src/blocks/blog-card/editor.js:278
 msgid "Number of characters"
 msgstr ""
 
-#: build/editors.js:6
+#: build/editors.js:422
 #: src/blocks/blog-card/editor.js:268
 msgid "Description"
 msgstr ""
 
-#: build/editors.js:6
+#: build/editors.js:443
+#: build/editors.js:754
 #: src/blocks/blog-card/editor.js:291
+#: src/blocks/section/editor.js:183
 msgid "Image"
 msgstr ""
 
-#: build/editors.js:6
-#: src/blocks/blog-card/editor.js:229
-msgid "Delete image"
-msgstr ""
-
-#: build/editors.js:6
-#: src/blocks/blog-card/editor.js:236
-msgid "Add Image"
-msgstr ""
-
-#: build/editors.js:6
+#: build/editors.js:459
 #: src/blocks/blog-card/editor.js:308
 msgid "Image position"
 msgstr ""
 
-#: build/editors.js:6
+#: build/editors.js:468
 #: src/blocks/blog-card/editor.js:320
 msgid "Image Fit"
 msgstr ""
 
-#: build/editors.js:6
+#: build/editors.js:503
 #: src/blocks/blog-card/editor.js:387
 msgid "Link URL"
 msgstr ""
 
-#: build/editors.js:6
+#: build/editors.js:518
 #: src/blocks/blog-card/editor.js:400
 msgid "Load"
+msgstr ""
+
+#: build/editors.js:603
+#: src/blocks/section/editor.js:22
+msgid "Center"
+msgstr ""
+
+#: build/editors.js:613
+#: src/blocks/section/editor.js:28
+msgid "Section"
+msgstr ""
+
+#: build/editors.js:614
+#: src/blocks/section/editor.js:29
+msgid "You can set up full-width sections and place content inside."
+msgstr ""
+
+#: build/editors.js:743
+#: src/blocks/section/editor.js:172
+msgid "Background"
+msgstr ""
+
+#: build/editors.js:745
+#: src/blocks/section/editor.js:173
+msgid "Color"
+msgstr ""
+
+#: build/editors.js:770
+#: src/blocks/section/editor.js:201
+msgid "Opacity"
+msgstr ""
+
+#: build/editors.js:781
+#: src/blocks/section/editor.js:214
+msgid "Inner"
+msgstr ""
+
+#: build/editors.js:783
+#: src/blocks/section/editor.js:217
+msgid "Use the Max Width"
+msgstr ""
+
+#: build/editors.js:792
+#: src/blocks/section/editor.js:227
+msgid "Max Width (px)"
+msgstr ""
+
+#: build/editors.js:803
+#: src/blocks/section/editor.js:239
+msgid "Position"
+msgstr ""
+
+#: build/editors.js:813
+#: src/blocks/section/editor.js:250
+msgid "Padding Top (px)"
+msgstr ""
+
+#: build/editors.js:825
+#: src/blocks/section/editor.js:263
+msgid "Padding Right (px)"
+msgstr ""
+
+#: build/editors.js:837
+#: src/blocks/section/editor.js:276
+msgid "Padding Bottom (px)"
+msgstr ""
+
+#: build/editors.js:849
+#: src/blocks/section/editor.js:289
+msgid "Padding Left (px)"
+msgstr ""
+
+#: src/blocks/compact-box/editor.js:26
+msgid "Compact Box"
+msgstr ""
+
+#: src/blocks/compact-box/editor.js:27
+msgid "It can be folded up to hold content. I recommend using it for storing spoilers and long asides."
+msgstr ""
+
+#: src/blocks/compact-box/editor.js:84
+msgid "Angle"
+msgstr ""
+
+#: src/blocks/compact-box/editor.js:87
+msgid "Angle Position"
 msgstr ""

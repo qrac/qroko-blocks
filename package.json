@@ -13,6 +13,7 @@
   "scripts": {
     "dev": "wp-scripts start ./src/editors.js ./src/fronts.js",
     "build": "wp-scripts build ./src/editors.js ./src/fronts.js",
+    "pot": "wp i18n make-pot ./",
     "lang": "po2json ./languages/qroko-blocks-ja.po ./languages/qroko-blocks-ja-qroko-blocks-editors.json -f jed",
     "clean": "rmtrash ./build"
   },
