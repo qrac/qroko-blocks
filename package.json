@@ -17,8 +17,9 @@
     "lang": "po2json ./languages/qroko-blocks-ja.po ./languages/qroko-blocks-ja-qroko-blocks-editors.json -f jed",
     "clean": "rmtrash ./build"
   },
+  "dependencies": {},
   "devDependencies": {
-    "@wordpress/scripts": "^12.1.1",
+    "@wordpress/scripts": "^12.3.0",
     "classnames": "^2.2.6",
     "po2json": "^1.0.0-beta-2"
   }

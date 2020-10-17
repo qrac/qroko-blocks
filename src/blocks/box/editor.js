@@ -30,6 +30,24 @@ const borderStyleList = [
   { label: __("Double", "qroko-blocks"), value: "double" },
 ]
 
+const hexRgb = (hex) => {
+  if (hex === undefined || hex === null) hex = "#ffffff"
+  if (hex.slice(0, 1) == "#") hex = hex.slice(1)
+  if (hex.length == 3)
+    hex =
+      hex.slice(0, 1) +
+      hex.slice(0, 1) +
+      hex.slice(1, 2) +
+      hex.slice(1, 2) +
+      hex.slice(2, 3) +
+      hex.slice(2, 3)
+  return {
+    red: parseInt(hex.slice(0, 2), 16),
+    green: parseInt(hex.slice(2, 4), 16),
+    blue: parseInt(hex.slice(4, 6), 16),
+  }
+}
+
 registerBlockType("qroko-blocks/box", {
   title: __("Box", "qroko-blocks"),
   description: __(
@@ -68,6 +86,7 @@ registerBlockType("qroko-blocks/box", {
     },
     backgroundColor: {
       type: "string",
+      default: "#f2f2f2",
     },
     backgroundOpacity: {
       type: "number",
@@ -87,6 +106,7 @@ registerBlockType("qroko-blocks/box", {
     },
     borderColor: {
       type: "string",
+      default: "#e4e4e4",
     },
     borderOpacity: {
       type: "number",
@@ -114,6 +134,7 @@ registerBlockType("qroko-blocks/box", {
     },
     shadowColor: {
       type: "string",
+      default: "#000000",
     },
     shadowOpacity: {
       type: "number",
@@ -140,74 +161,45 @@ registerBlockType("qroko-blocks/box", {
     const calcMaxWidth = attributes.maxWidthTrigger
       ? attributes.maxWidth + "px"
       : "none"
-    const calcOpacity = (value) => {
-      return String(value / 100)
+    const calcMarginRight = attributes.position === "right" ? "0" : "auto"
+    const calcMarginLeft = attributes.position === "left" ? "0" : "auto"
+
+    const rgbBackgroundColor = hexRgb(attributes.backgroundColor)
+    const rgbBorderColor = hexRgb(attributes.borderColor)
+    const rgbShadowColor = hexRgb(attributes.shadowColor)
+    const calcColor = (rgb, alpha) => {
+      return `rgb(${rgb.red} ${rgb.green} ${rgb.blue} / ${alpha}%)`
     }
-    const calcMarginRight = () => {
-      switch (attributes.position) {
-        case "center":
-          return "auto"
-        case "left":
-          return "auto"
-        case "right":
-          return "0"
-        default:
-          return "auto"
-      }
-    }
-    const calcMarginLeft = () => {
-      switch (attributes.position) {
-        case "center":
-          return "auto"
-        case "left":
-          return "0"
-        case "right":
-          return "auto"
-        default:
-          return "auto"
-      }
-    }
-    const calcPadding = (value) => {
-      const currentBorderWidth = attributes.borderTrigger
-        ? attributes.borderWidth
-        : 0
-      return currentBorderWidth + value + "px"
-    }
+
+    const calcBackgroundColor = calcColor(
+      rgbBackgroundColor,
+      attributes.backgroundOpacity
+    )
+    const calcBackground = attributes.backgroundTrigger
+      ? calcBackgroundColor
+      : "none"
+
+    const calcBorderColor = calcColor(rgbBorderColor, attributes.borderOpacity)
+    const calcBorder = attributes.borderTrigger
+      ? `${attributes.borderWidth}px ${attributes.borderStyle} ${calcBorderColor}`
+      : "none"
+
+    const calcShadowColor = calcColor(rgbShadowColor, attributes.shadowOpacity)
+    const calcShadow = attributes.shadowTrigger
+      ? `${attributes.shadowX}px ${attributes.shadowY}px ${attributes.shadowBlur}px ${attributes.shadowSpread}px ${calcShadowColor}`
+      : "none"
+
+    const calcPadding = `${attributes.innerPaddingTop}px ${attributes.innerPaddingRight}px ${attributes.innerPaddingBottom}px ${attributes.innerPaddingLeft}px`
+
     const boxVariables = {
       "--qroko-blocks-box-max-width": calcMaxWidth,
-      "--qroko-blocks-box-margin-right": calcMarginRight(),
-      "--qroko-blocks-box-margin-left": calcMarginLeft(),
+      "--qroko-blocks-box-margin-right": calcMarginRight,
+      "--qroko-blocks-box-margin-left": calcMarginLeft,
       "--qroko-blocks-box-radius": attributes.radius + "px",
-      "--qroko-blocks-box-background-color": attributes.backgroundColor,
-      "--qroko-blocks-box-background-opacity": calcOpacity(
-        attributes.backgroundOpacity
-      ),
-      "--qroko-blocks-box-border-width": attributes.borderWidth + "px",
-      "--qroko-blocks-box-border-style": attributes.borderStyle,
-      "--qroko-blocks-box-border-color": attributes.borderColor,
-      "--qroko-blocks-box-border-opacity": calcOpacity(
-        attributes.borderOpacity
-      ),
-      "--qroko-blocks-box-shadow-x": attributes.shadowX + "px",
-      "--qroko-blocks-box-shadow-y": attributes.shadowY + "px",
-      "--qroko-blocks-box-shadow-blur": attributes.shadowBlur + "px",
-      "--qroko-blocks-box-shadow-spread": attributes.shadowSpread + "px",
-      "--qroko-blocks-box-shadow-color": attributes.shadowColor,
-      "--qroko-blocks-box-shadow-opacity": calcOpacity(
-        attributes.shadowOpacity
-      ),
-      "--qroko-blocks-box-inner-padding-top": calcPadding(
-        attributes.innerPaddingTop
-      ),
-      "--qroko-blocks-box-inner-padding-right": calcPadding(
-        attributes.innerPaddingRight
-      ),
-      "--qroko-blocks-box-inner-padding-bottom": calcPadding(
-        attributes.innerPaddingBottom
-      ),
-      "--qroko-blocks-box-inner-padding-left": calcPadding(
-        attributes.innerPaddingLeft
-      ),
+      "--qroko-blocks-box-background": calcBackground,
+      "--qroko-blocks-box-border": calcBorder,
+      "--qroko-blocks-box-shadow": calcShadow,
+      "--qroko-blocks-box-padding": calcPadding,
     }
     return (
       <div
@@ -514,18 +506,7 @@ registerBlockType("qroko-blocks/box", {
             </BaseControl>
           </PanelBody>
         </InspectorControls>
-        {attributes.backgroundTrigger && (
-          <div className="qroko-blocks-box-background"></div>
-        )}
-        {attributes.borderTrigger && (
-          <div className="qroko-blocks-box-border"></div>
-        )}
-        {attributes.shadowTrigger && (
-          <div className="qroko-blocks-box-shadow"></div>
-        )}
-        <div className="qroko-blocks-box-inner">
-          <InnerBlocks />
-        </div>
+        <InnerBlocks />
       </div>
     )
   },
@@ -533,92 +514,52 @@ registerBlockType("qroko-blocks/box", {
     const calcMaxWidth = attributes.maxWidthTrigger
       ? attributes.maxWidth + "px"
       : "none"
-    const calcOpacity = (value) => {
-      return String(value / 100)
+    const calcMarginRight = attributes.position === "right" ? "0" : "auto"
+    const calcMarginLeft = attributes.position === "left" ? "0" : "auto"
+
+    const rgbBackgroundColor = hexRgb(attributes.backgroundColor)
+    const rgbBorderColor = hexRgb(attributes.borderColor)
+    const rgbShadowColor = hexRgb(attributes.shadowColor)
+    const calcColor = (rgb, alpha) => {
+      return `rgb(${rgb.red} ${rgb.green} ${rgb.blue} / ${alpha}%)`
     }
-    const calcMarginRight = () => {
-      switch (attributes.position) {
-        case "center":
-          return "auto"
-        case "left":
-          return "auto"
-        case "right":
-          return "0"
-        default:
-          return "auto"
-      }
-    }
-    const calcMarginLeft = () => {
-      switch (attributes.position) {
-        case "center":
-          return "auto"
-        case "left":
-          return "0"
-        case "right":
-          return "auto"
-        default:
-          return "auto"
-      }
-    }
-    const calcPadding = (value) => {
-      const currentBorderWidth = attributes.borderTrigger
-        ? attributes.borderWidth
-        : 0
-      return currentBorderWidth + value + "px"
-    }
+
+    const calcBackgroundColor = calcColor(
+      rgbBackgroundColor,
+      attributes.backgroundOpacity
+    )
+    const calcBackground = attributes.backgroundTrigger
+      ? calcBackgroundColor
+      : "none"
+
+    const calcBorderColor = calcColor(rgbBorderColor, attributes.borderOpacity)
+    const calcBorder = attributes.borderTrigger
+      ? `${attributes.borderWidth}px ${attributes.borderStyle} ${calcBorderColor}`
+      : "none"
+
+    const calcShadowColor = calcColor(rgbShadowColor, attributes.shadowOpacity)
+    const calcShadow = attributes.shadowTrigger
+      ? `${attributes.shadowX}px ${attributes.shadowY}px ${attributes.shadowBlur}px ${attributes.shadowSpread}px ${calcShadowColor}`
+      : "none"
+
+    const calcPadding = `${attributes.innerPaddingTop}px ${attributes.innerPaddingRight}px ${attributes.innerPaddingBottom}px ${attributes.innerPaddingLeft}px`
+
     const boxVariables = {
       "--qroko-blocks-box-max-width": calcMaxWidth,
-      "--qroko-blocks-box-margin-right": calcMarginRight(),
-      "--qroko-blocks-box-margin-left": calcMarginLeft(),
+      "--qroko-blocks-box-margin-right": calcMarginRight,
+      "--qroko-blocks-box-margin-left": calcMarginLeft,
       "--qroko-blocks-box-radius": attributes.radius + "px",
-      "--qroko-blocks-box-background-color": attributes.backgroundColor,
-      "--qroko-blocks-box-background-opacity": calcOpacity(
-        attributes.backgroundOpacity
-      ),
-      "--qroko-blocks-box-border-width": attributes.borderWidth + "px",
-      "--qroko-blocks-box-border-style": attributes.borderStyle,
-      "--qroko-blocks-box-border-color": attributes.borderColor,
-      "--qroko-blocks-box-border-opacity": calcOpacity(
-        attributes.borderOpacity
-      ),
-      "--qroko-blocks-box-shadow-x": attributes.shadowX + "px",
-      "--qroko-blocks-box-shadow-y": attributes.shadowY + "px",
-      "--qroko-blocks-box-shadow-blur": attributes.shadowBlur + "px",
-      "--qroko-blocks-box-shadow-spread": attributes.shadowSpread + "px",
-      "--qroko-blocks-box-shadow-color": attributes.shadowColor,
-      "--qroko-blocks-box-shadow-opacity": calcOpacity(
-        attributes.shadowOpacity
-      ),
-      "--qroko-blocks-box-inner-padding-top": calcPadding(
-        attributes.innerPaddingTop
-      ),
-      "--qroko-blocks-box-inner-padding-right": calcPadding(
-        attributes.innerPaddingRight
-      ),
-      "--qroko-blocks-box-inner-padding-bottom": calcPadding(
-        attributes.innerPaddingBottom
-      ),
-      "--qroko-blocks-box-inner-padding-left": calcPadding(
-        attributes.innerPaddingLeft
-      ),
+      "--qroko-blocks-box-background": calcBackground,
+      "--qroko-blocks-box-border": calcBorder,
+      "--qroko-blocks-box-shadow": calcShadow,
+      "--qroko-blocks-box-padding": calcPadding,
     }
     return (
       <div
         className={classNames(className, "qroko-blocks-box")}
         style={boxVariables}
       >
-        {attributes.backgroundTrigger && (
-          <div className="qroko-blocks-box-background"></div>
-        )}
-        {attributes.borderTrigger && (
-          <div className="qroko-blocks-box-border"></div>
-        )}
-        {attributes.shadowTrigger && (
-          <div className="qroko-blocks-box-shadow"></div>
-        )}
-        <div className="qroko-blocks-box-inner">
-          <InnerBlocks.Content />
-        </div>
+        <InnerBlocks.Content />
       </div>
     )
   },
