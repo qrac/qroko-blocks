@@ -39,6 +39,11 @@ registerBlockType("qroko-blocks/section", {
       />
     </svg>
   ),
+  supports: {
+    anchor: true,
+    className: true,
+    customClassName: true,
+  },
   attributes: {
     backgroundColor: {
       type: "string",

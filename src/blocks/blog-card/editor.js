@@ -43,6 +43,11 @@ registerBlockType("qroko-blocks/blog-card", {
       />
     </svg>
   ),
+  supports: {
+    anchor: true,
+    className: true,
+    customClassName: true,
+  },
   attributes: {
     url: {
       type: "string",

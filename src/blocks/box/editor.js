@@ -63,6 +63,11 @@ registerBlockType("qroko-blocks/box", {
       />
     </svg>
   ),
+  supports: {
+    anchor: true,
+    className: true,
+    customClassName: true,
+  },
   attributes: {
     maxWidthTrigger: {
       type: "boolean",

@@ -41,6 +41,11 @@ registerBlockType("qroko-blocks/compact-box", {
       />
     </svg>
   ),
+  supports: {
+    anchor: true,
+    className: true,
+    customClassName: true,
+  },
   attributes: {
     title: {
       type: "string",
