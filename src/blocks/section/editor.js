@@ -316,7 +316,7 @@ registerBlockType("qroko-blocks/section", {
   save({ attributes, className }) {
     const calcBackgroundImageURL = attributes.backgroundImageURL
       ? `url(${attributes.backgroundImageURL})`
-      : ""
+      : "none"
     const calcBackgroundOpacity = String(attributes.backgroundOpacity / 100)
     const calcInnerMaxWidth = attributes.innerMaxWidthTrigger
       ? attributes.innerMaxWidth + "px"
