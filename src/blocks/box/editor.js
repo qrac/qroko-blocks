@@ -224,10 +224,11 @@ registerBlockType("qroko-blocks/box", {
                 min={100}
                 max={1600}
                 initialPosition={1000}
+                resetFallbackValue={1000}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    maxWidth: !value ? 1000 : value,
+                    maxWidth: value,
                   })
                 }}
               />
@@ -247,10 +248,11 @@ registerBlockType("qroko-blocks/box", {
                 min={0}
                 max={40}
                 initialPosition={4}
+                resetFallbackValue={4}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    radius: !value ? 4 : value,
+                    radius: value,
                   })
                 }}
               />
@@ -285,10 +287,11 @@ registerBlockType("qroko-blocks/box", {
                 min={0}
                 max={100}
                 initialPosition={100}
+                resetFallbackValue={100}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    backgroundOpacity: !value ? 100 : value,
+                    backgroundOpacity: value,
                   })
                 }}
               />
@@ -313,10 +316,11 @@ registerBlockType("qroko-blocks/box", {
                 min={0}
                 max={40}
                 initialPosition={1}
+                resetFallbackValue={1}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    borderWidth: !value ? 1 : value,
+                    borderWidth: value,
                   })
                 }}
               />
@@ -348,10 +352,11 @@ registerBlockType("qroko-blocks/box", {
                 min={0}
                 max={100}
                 initialPosition={100}
+                resetFallbackValue={100}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    borderOpacity: !value ? 100 : value,
+                    borderOpacity: value,
                   })
                 }}
               />
@@ -376,10 +381,11 @@ registerBlockType("qroko-blocks/box", {
                 min={-40}
                 max={40}
                 initialPosition={0}
+                resetFallbackValue={0}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    shadowX: !value ? 0 : value,
+                    shadowX: value,
                   })
                 }}
               />
@@ -389,10 +395,11 @@ registerBlockType("qroko-blocks/box", {
                 min={-40}
                 max={40}
                 initialPosition={8}
+                resetFallbackValue={8}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    shadowY: !value ? 8 : value,
+                    shadowY: value,
                   })
                 }}
               />
@@ -402,10 +409,11 @@ registerBlockType("qroko-blocks/box", {
                 min={0}
                 max={40}
                 initialPosition={8}
+                resetFallbackValue={8}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    shadowBlur: !value ? 8 : value,
+                    shadowBlur: value,
                   })
                 }}
               />
@@ -415,10 +423,11 @@ registerBlockType("qroko-blocks/box", {
                 min={-40}
                 max={40}
                 initialPosition={-4}
+                resetFallbackValue={-4}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    shadowSpread: !value ? -4 : value,
+                    shadowSpread: value,
                   })
                 }}
               />
@@ -440,10 +449,11 @@ registerBlockType("qroko-blocks/box", {
                 min={0}
                 max={100}
                 initialPosition={12}
+                resetFallbackValue={12}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    shadowOpacity: !value ? 12 : value,
+                    shadowOpacity: value,
                   })
                 }}
               />
@@ -457,10 +467,11 @@ registerBlockType("qroko-blocks/box", {
                 min={0}
                 max={200}
                 initialPosition={16}
+                resetFallbackValue={16}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    innerPaddingTop: !value ? 16 : value,
+                    innerPaddingTop: value,
                   })
                 }}
               />
@@ -470,10 +481,11 @@ registerBlockType("qroko-blocks/box", {
                 min={0}
                 max={200}
                 initialPosition={16}
+                resetFallbackValue={16}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    innerPaddingRight: !value ? 16 : value,
+                    innerPaddingRight: value,
                   })
                 }}
               />
@@ -483,10 +495,11 @@ registerBlockType("qroko-blocks/box", {
                 min={0}
                 max={200}
                 initialPosition={16}
+                resetFallbackValue={16}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    innerPaddingBottom: !value ? 16 : value,
+                    innerPaddingBottom: value,
                   })
                 }}
               />
@@ -496,10 +509,11 @@ registerBlockType("qroko-blocks/box", {
                 min={0}
                 max={200}
                 initialPosition={16}
+                resetFallbackValue={16}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    innerPaddingLeft: !value ? 16 : value,
+                    innerPaddingLeft: value,
                   })
                 }}
               />
@@ -520,6 +534,7 @@ registerBlockType("qroko-blocks/box", {
     const rgbBackgroundColor = hexRgb(attributes.backgroundColor)
     const rgbBorderColor = hexRgb(attributes.borderColor)
     const rgbShadowColor = hexRgb(attributes.shadowColor)
+
     const calcColor = (rgb, alpha) => {
       return `rgb(${rgb.red} ${rgb.green} ${rgb.blue} / ${alpha}%)`
     }

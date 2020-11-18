@@ -202,10 +202,11 @@ registerBlockType("qroko-blocks/section", {
                 min={0}
                 max={100}
                 initialPosition={100}
+                resetFallbackValue={100}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    backgroundOpacity: !value ? 100 : value,
+                    backgroundOpacity: value,
                   })
                 }}
               />
@@ -228,10 +229,11 @@ registerBlockType("qroko-blocks/section", {
                 min={100}
                 max={1600}
                 initialPosition={1000}
+                resetFallbackValue={1000}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    innerMaxWidth: !value ? 1000 : value,
+                    innerMaxWidth: value,
                   })
                 }}
               />
@@ -251,10 +253,11 @@ registerBlockType("qroko-blocks/section", {
                 min={0}
                 max={200}
                 initialPosition={32}
+                resetFallbackValue={32}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    innerPaddingTop: !value ? 32 : value,
+                    innerPaddingTop: value,
                   })
                 }}
               />
@@ -264,10 +267,11 @@ registerBlockType("qroko-blocks/section", {
                 min={0}
                 max={200}
                 initialPosition={0}
+                resetFallbackValue={0}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    innerPaddingRight: !value ? 0 : value,
+                    innerPaddingRight: value,
                   })
                 }}
               />
@@ -277,10 +281,11 @@ registerBlockType("qroko-blocks/section", {
                 min={0}
                 max={200}
                 initialPosition={32}
+                resetFallbackValue={32}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    innerPaddingBottom: !value ? 32 : value,
+                    innerPaddingBottom: value,
                   })
                 }}
               />
@@ -290,10 +295,11 @@ registerBlockType("qroko-blocks/section", {
                 min={0}
                 max={200}
                 initialPosition={0}
+                resetFallbackValue={0}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    innerPaddingLeft: !value ? 0 : value,
+                    innerPaddingLeft: value,
                   })
                 }}
               />

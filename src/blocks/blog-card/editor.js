@@ -256,10 +256,11 @@ registerBlockType("qroko-blocks/blog-card", {
                 min={1}
                 max={200}
                 initialPosition={50}
+                resetFallbackValue={50}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    ogTitleCharacterCount: !value ? 50 : value,
+                    ogTitleCharacterCount: value,
                   })
                 }}
               />
@@ -279,10 +280,11 @@ registerBlockType("qroko-blocks/blog-card", {
                 min={1}
                 max={200}
                 initialPosition={60}
+                resetFallbackValue={60}
                 allowReset
                 onChange={(value) => {
                   setAttributes({
-                    ogDescriptionCharacterCount: !value ? 60 : value,
+                    ogDescriptionCharacterCount: value,
                   })
                 }}
               />
