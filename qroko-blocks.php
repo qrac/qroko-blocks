@@ -48,7 +48,8 @@ add_action('init', function() {
     'qroko-blocks-editors',
     plugins_url('build/editors.js', __FILE__),
     $editors_asset_file['dependencies'],
-    $editors_asset_file['version']
+    $editors_asset_file['version'],
+    true
   );
 
   // Register Block: Section
