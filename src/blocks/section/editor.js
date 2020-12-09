@@ -18,6 +18,18 @@ import classNames from "classnames"
 
 import "./editor.css"
 
+const backgroundPositionList = [
+  { label: __("Center", "qroko-blocks"), value: "center" },
+  { label: __("Top", "qroko-blocks"), value: "top" },
+  { label: __("Bottom", "qroko-blocks"), value: "bottom" },
+  /*{ label: __("Left", "qroko-blocks"), value: "left" },
+  { label: __("Right", "qroko-blocks"), value: "right" },
+  { label: __("Top Left", "qroko-blocks"), value: "top left" },
+  { label: __("Top Right", "qroko-blocks"), value: "top right" },
+  { label: __("Bottom Left", "qroko-blocks"), value: "bottom left" },
+  { label: __("Bottom Right", "qroko-blocks"), value: "bottom right" },*/
+]
+
 const innerPositionList = [
   { label: __("Center", "qroko-blocks"), value: "center" },
   { label: __("Left", "qroko-blocks"), value: "left" },
@@ -199,6 +211,18 @@ registerBlockType("qroko-blocks/section", {
                   render={({ open }) => mediaUploadRender(open)}
                 />
               </div>
+            </BaseControl>
+            <BaseControl>
+              <RadioControl
+                label={__("Position", "qroko-blocks")}
+                selected={attributes.backgroundPosition}
+                options={backgroundPositionList}
+                onChange={(option) => {
+                  setAttributes({
+                    backgroundPosition: option,
+                  })
+                }}
+              />
             </BaseControl>
             <BaseControl>
               <RangeControl
