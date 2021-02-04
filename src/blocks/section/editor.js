@@ -22,12 +22,6 @@ const backgroundPositionList = [
   { label: __("Center", "qroko-blocks"), value: "center" },
   { label: __("Top", "qroko-blocks"), value: "top" },
   { label: __("Bottom", "qroko-blocks"), value: "bottom" },
-  /*{ label: __("Left", "qroko-blocks"), value: "left" },
-  { label: __("Right", "qroko-blocks"), value: "right" },
-  { label: __("Top Left", "qroko-blocks"), value: "top left" },
-  { label: __("Top Right", "qroko-blocks"), value: "top right" },
-  { label: __("Bottom Left", "qroko-blocks"), value: "bottom left" },
-  { label: __("Bottom Right", "qroko-blocks"), value: "bottom right" },*/
 ]
 
 const innerPositionList = [
@@ -35,6 +29,83 @@ const innerPositionList = [
   { label: __("Left", "qroko-blocks"), value: "left" },
   { label: __("Right", "qroko-blocks"), value: "right" },
 ]
+
+const formatBackgroundImageURL = ({ imageURL }) => {
+  return imageURL ? `url(${imageURL})` : ""
+}
+
+const formatOpacity = ({ opacity }) => {
+  return String(opacity / 100)
+}
+
+const formatTriggerSize = ({ trigger, size }) => {
+  return trigger ? size + "px" : "none"
+}
+
+const formatPositionMargin = ({ position }) => {
+  switch (position) {
+    case "center":
+      return "0 auto"
+    case "left":
+      return "0 auto 0 0"
+    case "right":
+      return "0 0 0 auto"
+    default:
+      return "0 auto"
+  }
+}
+
+const mediaUploadRender = ({ setAttributes, imageURL, clear, open }) => {
+  if (imageURL) {
+    return (
+      <div>
+        <Button onClick={open} className="qroko-blocks-section-image-preview">
+          <img src={imageURL} alt={""} />
+        </Button>
+        <Button
+          onClick={() => {
+            setAttributes(clear)
+          }}
+          className="button"
+        >
+          {__("Delete image", "qroko-blocks")}
+        </Button>
+      </div>
+    )
+  } else {
+    return (
+      <Button onClick={open} className="button">
+        {__("Add Image", "qroko-blocks")}
+      </Button>
+    )
+  }
+}
+
+const sectionVariables = ({ attributes }) => ({
+  "--qroko-blocks-section-background-color": attributes.backgroundColor,
+  "--qroko-blocks-section-background-image": formatBackgroundImageURL({
+    imageURL: attributes.backgroundImageURL,
+  }),
+  "--qroko-blocks-section-background-size": attributes.backgroundSize,
+  "--qroko-blocks-section-background-position": attributes.backgroundPosition,
+  "--qroko-blocks-section-background-opacity": formatOpacity({
+    opacity: attributes.backgroundOpacity,
+  }),
+  "--qroko-blocks-section-inner-max-width": formatTriggerSize({
+    trigger: attributes.innerMaxWidthTrigger,
+    size: attributes.innerMaxWidth,
+  }),
+  "--qroko-blocks-section-inner-margin": formatPositionMargin({
+    position: attributes.innerPosition,
+  }),
+  "--qroko-blocks-section-inner-padding-top": attributes.innerPaddingTop + "px",
+  "--qroko-blocks-section-inner-padding-right":
+    attributes.innerPaddingRight + "px",
+  "--qroko-blocks-section-inner-padding-bottom":
+    attributes.innerPaddingBottom + "px",
+  "--qroko-blocks-section-inner-padding-left":
+    attributes.innerPaddingLeft + "px",
+})
 
 registerBlockType("qroko-blocks/section", {
   title: __("Section", "qroko-blocks"),
@@ -110,80 +181,10 @@ registerBlockType("qroko-blocks/section", {
     },
   },
   edit({ attributes, className, setAttributes }) {
-    const calcBackgroundImageURL = attributes.backgroundImageURL
-      ? `url(${attributes.backgroundImageURL})`
-      : ""
-    const calcBackgroundOpacity = String(attributes.backgroundOpacity / 100)
-    const calcInnerMaxWidth = attributes.innerMaxWidthTrigger
-      ? attributes.innerMaxWidth + "px"
-      : "none"
-    const calcInnerMargin = () => {
-      switch (attributes.innerPosition) {
-        case "center":
-          return "0 auto"
-        case "left":
-          return "0 auto 0 0"
-        case "right":
-          return "0 0 0 auto"
-        default:
-          return "0 auto"
-      }
-    }
-    const sectionVariables = {
-      "--qroko-blocks-section-background-color": attributes.backgroundColor,
-      "--qroko-blocks-section-background-image": calcBackgroundImageURL,
-      "--qroko-blocks-section-background-size": attributes.backgroundSize,
-      "--qroko-blocks-section-background-position":
-        attributes.backgroundPosition,
-      "--qroko-blocks-section-background-opacity": calcBackgroundOpacity,
-      "--qroko-blocks-section-inner-max-width": calcInnerMaxWidth,
-      "--qroko-blocks-section-inner-margin": calcInnerMargin(),
-      "--qroko-blocks-section-inner-padding-top":
-        attributes.innerPaddingTop + "px",
-      "--qroko-blocks-section-inner-padding-right":
-        attributes.innerPaddingRight + "px",
-      "--qroko-blocks-section-inner-padding-bottom":
-        attributes.innerPaddingBottom + "px",
-      "--qroko-blocks-section-inner-padding-left":
-        attributes.innerPaddingLeft + "px",
-    }
-
-    const mediaUploadRender = (openEvent) => {
-      if (attributes.backgroundImageURL) {
-        return (
-          <div>
-            <Button
-              onClick={openEvent}
-              className="qroko-blocks-section-image-preview"
-            >
-              <img src={attributes.backgroundImageURL} alt={""} />
-            </Button>
-            <Button
-              onClick={() => {
-                setAttributes({
-                  backgroundImageID: 0,
-                  backgroundImageURL: "",
-                })
-              }}
-              className="button"
-            >
-              {__("Delete image", "qroko-blocks")}
-            </Button>
-          </div>
-        )
-      } else {
-        return (
-          <Button onClick={openEvent} className="button">
-            {__("Add Image", "qroko-blocks")}
-          </Button>
-        )
-      }
-    }
-
     return (
       <section
         className={classNames(className, "qroko-blocks-section")}
-        style={sectionVariables}
+        style={sectionVariables({ attributes: attributes })}
       >
         <InspectorControls>
           <PanelBody title={__("Background", "qroko-blocks")}>
@@ -208,7 +209,17 @@ registerBlockType("qroko-blocks/section", {
                   }}
                   type={"image"}
                   value={attributes.backgroundImageID}
-                  render={({ open }) => mediaUploadRender(open)}
+                  render={({ open }) =>
+                    mediaUploadRender({
+                      setAttributes: setAttributes,
+                      imageURL: attributes.backgroundImageURL,
+                      clear: {
+                        backgroundImageID: 0,
+                        backgroundImageURL: "",
+                      },
+                      open: open,
+                    })
+                  }
                 />
               </div>
             </BaseControl>
@@ -343,47 +354,10 @@ registerBlockType("qroko-blocks/section", {
     )
   },
   save({ attributes, className }) {
-    const calcBackgroundImageURL = attributes.backgroundImageURL
-      ? `url(${attributes.backgroundImageURL})`
-      : "none"
-    const calcBackgroundOpacity = String(attributes.backgroundOpacity / 100)
-    const calcInnerMaxWidth = attributes.innerMaxWidthTrigger
-      ? attributes.innerMaxWidth + "px"
-      : "none"
-    const calcInnerMargin = () => {
-      switch (attributes.innerPosition) {
-        case "center":
-          return "0 auto"
-        case "left":
-          return "0 auto 0 0"
-        case "right":
-          return "0 0 0 auto"
-        default:
-          return "0 auto"
-      }
-    }
-    const sectionVariables = {
-      "--qroko-blocks-section-background-color": attributes.backgroundColor,
-      "--qroko-blocks-section-background-image": calcBackgroundImageURL,
-      "--qroko-blocks-section-background-size": attributes.backgroundSize,
-      "--qroko-blocks-section-background-position":
-        attributes.backgroundPosition,
-      "--qroko-blocks-section-background-opacity": calcBackgroundOpacity,
-      "--qroko-blocks-section-inner-max-width": calcInnerMaxWidth,
-      "--qroko-blocks-section-inner-margin": calcInnerMargin(),
-      "--qroko-blocks-section-inner-padding-top":
-        attributes.innerPaddingTop + "px",
-      "--qroko-blocks-section-inner-padding-right":
-        attributes.innerPaddingRight + "px",
-      "--qroko-blocks-section-inner-padding-bottom":
-        attributes.innerPaddingBottom + "px",
-      "--qroko-blocks-section-inner-padding-left":
-        attributes.innerPaddingLeft + "px",
-    }
     return (
       <section
         className={classNames(className, "qroko-blocks-section")}
-        style={sectionVariables}
+        style={sectionVariables({ attributes: attributes })}
       >
         <div className="qroko-blocks-section-background"></div>
         <div className="qroko-blocks-section-inner">
