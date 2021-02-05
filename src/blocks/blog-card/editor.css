@@ -49,7 +49,7 @@
   margin-bottom: 0;
 }
 
-.qroko-blocks-blog-card-delete-image-button {
+.qroko-blocks-blog-card-overlay-delete-button {
   cursor: pointer;
   position: absolute;
   top: 4px;
@@ -66,11 +66,11 @@
   z-index: 5;
 }
 
-.qroko-blocks-blog-card-delete-image-button:hover {
+.qroko-blocks-blog-card-overlay-delete-button:hover {
   opacity: 1;
 }
 
-.qroko-blocks-blog-card-delete-image-button .icon {
+.qroko-blocks-blog-card-overlay-delete-button .icon {
   flex: none;
   width: 22px;
   height: 22px;

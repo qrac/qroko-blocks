@@ -24,6 +24,136 @@ const imageFitList = [
   { label: __("Contain", "qroko-blocks"), value: "contain" },
 ]
 
+const loadOpenGraph = ({ url, attributes, setAttributes }) => {
+  let forms = new FormData()
+  forms.append("action", "open_graph")
+  forms.append("target_url", url)
+
+  fetch(ajaxurl, {
+    method: "POST",
+    body: forms,
+    cache: "no-cache",
+  })
+    .then((res) => res.json())
+    //.then((data) => console.log(data))
+    .then((json) => {
+      let cloneJson = json
+      setOpenGraph({
+        data: cloneJson[0],
+        attributes: attributes,
+        setAttributes: setAttributes,
+      })
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}
+
+const setOpenGraph = ({ data, attributes, setAttributes }) => {
+  const openGraphUrl = new URL(data.url)
+  const openGraphDomain = openGraphUrl.hostname
+  const currentDomain = location.hostname
+
+  const openGraphTitle = () => {
+    const count = attributes.ogTitleCharacterCount
+    const length = data.title ? data.title.length : 0
+    if (length >= count) {
+      return data.title.substr(0, count) + " ..."
+    } else {
+      return data.title
+    }
+  }
+
+  const openGraphDescription = () => {
+    const count = attributes.ogDescriptionCharacterCount
+    const length = data.description ? data.description.length : 0
+    if (length >= count) {
+      return data.description.substr(0, count) + " ..."
+    } else {
+      return data.description
+    }
+  }
+
+  const checkExternalLink = () => {
+    if (openGraphDomain != currentDomain) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  setAttributes({
+    title: openGraphTitle(),
+    description: openGraphDescription(),
+    imageID: 0,
+    imageURL: "",
+    imageAlt: openGraphTitle(),
+    ogDomain: openGraphDomain,
+    ogImageURL: data.image,
+    externalLink: checkExternalLink(),
+  })
+}
+
+const blogCardMediaUploadRender = ({
+  setAttributes,
+  imageURL,
+  ogImageURL,
+  clear,
+  open,
+}) => {
+  if (imageURL || ogImageURL) {
+    return (
+      <div>
+        <Button onClick={open} className="qroko-blocks-blog-card-image-preview">
+          <img
+            src={imageURL ? imageURL : ogImageURL ? ogImageURL : ""}
+            alt={""}
+          />
+        </Button>
+        <Button
+          onClick={() => {
+            setAttributes(clear)
+          }}
+          className="button"
+        >
+          {__("Delete image", "qroko-blocks")}
+        </Button>
+      </div>
+    )
+  } else {
+    return (
+      <Button onClick={open} className="button">
+        {__("Add Image", "qroko-blocks")}
+      </Button>
+    )
+  }
+}
+
+const OverlayDeleteButton = ({ setAttributes, clear }) => {
+  return (
+    <button
+      className="qroko-blocks-blog-card-overlay-delete-button"
+      type="button"
+      onClick={() => setAttributes(clear)}
+    >
+      <svg
+        className="icon"
+        viewBox="0 0 16 16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"
+        />
+        <path
+          fill-rule="evenodd"
+          d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"
+        />
+      </svg>
+    </button>
+  )
+}
+
 registerBlockType("qroko-blocks/blog-card", {
   title: __("Blog Card", "qroko-blocks"),
   description: __(
@@ -103,147 +233,6 @@ registerBlockType("qroko-blocks/blog-card", {
     },
   },
   edit({ attributes, className, setAttributes, isSelected }) {
-    const loadOpenGraph = (url) => {
-      let forms = new FormData()
-      forms.append("action", "open_graph")
-      forms.append("target_url", url)
-
-      fetch(ajaxurl, {
-        method: "POST",
-        body: forms,
-        cache: "no-cache",
-      })
-        .then((res) => res.json())
-        //.then((data) => console.log(data))
-        .then((json) => {
-          let cloneJson = json
-          setOpenGraph(cloneJson[0])
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-    }
-
-    const setOpenGraph = (data) => {
-      const openGraphUrl = new URL(data.url)
-      const openGraphDomain = openGraphUrl.hostname
-      const currentDomain = location.hostname
-
-      const openGraphTitle = () => {
-        const count = attributes.ogTitleCharacterCount
-        const length = data.title ? data.title.length : 0
-        if (length >= count) {
-          return data.title.substr(0, count) + " ..."
-        } else {
-          return data.title
-        }
-      }
-
-      const openGraphDescription = () => {
-        const count = attributes.ogDescriptionCharacterCount
-        const length = data.description ? data.description.length : 0
-        if (length >= count) {
-          return data.description.substr(0, count) + " ..."
-        } else {
-          return data.description
-        }
-      }
-
-      const checkExternalLink = () => {
-        if (openGraphDomain != currentDomain) {
-          return true
-        } else {
-          return false
-        }
-      }
-
-      setAttributes({
-        title: openGraphTitle(),
-        description: openGraphDescription(),
-        imageID: 0,
-        imageURL: "",
-        imageAlt: openGraphTitle(),
-        ogDomain: openGraphDomain,
-        ogImageURL: data.image,
-        externalLink: checkExternalLink(),
-      })
-    }
-
-    const DeleteImageButton = () => {
-      return (
-        <button
-          className="qroko-blocks-blog-card-delete-image-button"
-          type="button"
-          onClick={() =>
-            setAttributes({
-              imageID: 0,
-              imageAlt: "",
-              imageURL: "",
-              ogImageURL: "",
-            })
-          }
-        >
-          <svg
-            className="icon"
-            viewBox="0 0 16 16"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"
-            />
-            <path
-              fill-rule="evenodd"
-              d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"
-            />
-          </svg>
-        </button>
-      )
-    }
-
-    const mediaUploadRender = (openEvent) => {
-      if (attributes.imageURL || attributes.ogImageURL) {
-        return (
-          <div>
-            <Button
-              onClick={openEvent}
-              className="qroko-blocks-blog-card-image-preview"
-            >
-              <img
-                src={
-                  attributes.imageURL
-                    ? attributes.imageURL
-                    : attributes.ogImageURL
-                    ? attributes.ogImageURL
-                    : ""
-                }
-                alt={attributes.imageAlt}
-              />
-            </Button>
-            <Button
-              onClick={() => {
-                setAttributes({
-                  imageID: 0,
-                  imageURL: "",
-                  imageAlt: "",
-                  ogImageURL: "",
-                })
-              }}
-              className="button"
-            >
-              {__("Delete image", "qroko-blocks")}
-            </Button>
-          </div>
-        )
-      } else {
-        return (
-          <Button onClick={openEvent} className="button">
-            {__("Add Image", "qroko-blocks")}
-          </Button>
-        )
-      }
-    }
-
     return (
       <div className={classNames(className, "qroko-blocks-blog-card")}>
         <InspectorControls>
@@ -307,7 +296,20 @@ registerBlockType("qroko-blocks/blog-card", {
                 }}
                 type={"image"}
                 value={attributes.imageID}
-                render={({ open }) => mediaUploadRender(open)}
+                render={({ open }) =>
+                  blogCardMediaUploadRender({
+                    setAttributes: setAttributes,
+                    imageURL: attributes.imageURL,
+                    ogImageURL: attributes.ogImageURL,
+                    clear: {
+                      imageID: 0,
+                      imageAlt: "",
+                      imageURL: "",
+                      ogImageURL: "",
+                    },
+                    open: open,
+                  })
+                }
               />
             </BaseControl>
             <BaseControl>
@@ -346,7 +348,17 @@ registerBlockType("qroko-blocks/blog-card", {
             {(attributes.imageURL || attributes.ogImageURL) && (
               <div className="qroko-blocks-blog-card-column is-flex-none">
                 <div className="qroko-blocks-blog-card-image-container">
-                  {isSelected && <DeleteImageButton />}
+                  {isSelected && (
+                    <OverlayDeleteButton
+                      setAttributes={setAttributes}
+                      clear={{
+                        imageID: 0,
+                        imageAlt: "",
+                        imageURL: "",
+                        ogImageURL: "",
+                      }}
+                    />
+                  )}
                   <div className="qroko-blocks-blog-card-image-wrap">
                     <img
                       src={
@@ -401,7 +413,13 @@ registerBlockType("qroko-blocks/blog-card", {
             </div>
             <div className="qroko-blocks-blog-card-column is-flex-none">
               <Button
-                onClick={() => loadOpenGraph(attributes.url)}
+                onClick={() =>
+                  loadOpenGraph({
+                    url: attributes.url,
+                    attributes: attributes,
+                    setAttributes: setAttributes,
+                  })
+                }
                 className="button is-small"
               >
                 {__("Load", "qroko-blocks")}
