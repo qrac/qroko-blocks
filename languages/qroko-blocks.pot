@@ -1,15 +1,15 @@
-# Copyright (C) 2020 qrac
+# Copyright (C) 2021 qrac
 # This file is distributed under the same license as the Qroko Blocks plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Qroko Blocks 1.2.4\n"
+"Project-Id-Version: Qroko Blocks 1.3.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/qroko-blocks\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-12-09T06:38:52+00:00\n"
+"POT-Creation-Date: 2021-03-30T12:40:04+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: qroko-blocks\n"
@@ -36,22 +36,22 @@ msgid "https://qrac.jp/"
 msgstr ""
 
 #: build/editors.js:193
-#: build/editors.js:613
-#: build/editors.js:1162
+#: build/editors.js:644
+#: build/editors.js:1269
 #: src/blocks/blog-card/editor.js:18
-#: src/blocks/box/editor.js:22
+#: src/blocks/box/editor.js:21
 #: src/blocks/compact-box/editor.js:21
-#: src/blocks/section/editor.js:35
+#: src/blocks/section/editor.js:29
 msgid "Left"
 msgstr ""
 
 #: build/editors.js:196
-#: build/editors.js:616
-#: build/editors.js:1165
+#: build/editors.js:647
+#: build/editors.js:1272
 #: src/blocks/blog-card/editor.js:19
-#: src/blocks/box/editor.js:23
+#: src/blocks/box/editor.js:22
 #: src/blocks/compact-box/editor.js:22
-#: src/blocks/section/editor.js:36
+#: src/blocks/section/editor.js:30
 msgid "Right"
 msgstr ""
 
@@ -65,284 +65,289 @@ msgstr ""
 msgid "Contain"
 msgstr ""
 
-#: build/editors.js:207
-#: src/blocks/blog-card/editor.js:28
-msgid "Blog Card"
-msgstr ""
-
-#: build/editors.js:208
-#: src/blocks/blog-card/editor.js:29
-msgid "Block to create a card link. You can also edit it after getting the Open Graph from the link URL."
-msgstr ""
-
-#: build/editors.js:394
-#: build/editors.js:1291
-#: src/blocks/blog-card/editor.js:234
-#: src/blocks/section/editor.js:170
+#: build/editors.js:302
+#: build/editors.js:1328
+#: src/blocks/blog-card/editor.js:119
+#: src/blocks/section/editor.js:71
 msgid "Delete image"
 msgstr ""
 
-#: build/editors.js:399
-#: build/editors.js:1296
-#: src/blocks/blog-card/editor.js:241
-#: src/blocks/section/editor.js:177
+#: build/editors.js:307
+#: build/editors.js:1333
+#: src/blocks/blog-card/editor.js:126
+#: src/blocks/section/editor.js:78
 msgid "Add Image"
 msgstr ""
 
-#: build/editors.js:406
-#: src/blocks/blog-card/editor.js:250
+#: build/editors.js:334
+#: src/blocks/blog-card/editor.js:158
+msgid "Blog Card"
+msgstr ""
+
+#: build/editors.js:335
+#: src/blocks/blog-card/editor.js:159
+msgid "Block to create a card link. You can also edit it after getting the Open Graph from the link URL."
+msgstr ""
+
+#: build/editors.js:414
+#: src/blocks/blog-card/editor.js:239
 #: src/blocks/compact-box/editor.js:79
 msgid "Title"
 msgstr ""
 
-#: build/editors.js:416
-#: build/editors.js:438
-#: src/blocks/blog-card/editor.js:260
-#: src/blocks/blog-card/editor.js:284
+#: build/editors.js:424
+#: build/editors.js:446
+#: src/blocks/blog-card/editor.js:249
+#: src/blocks/blog-card/editor.js:273
 msgid "Number of characters"
 msgstr ""
 
-#: build/editors.js:428
-#: src/blocks/blog-card/editor.js:274
+#: build/editors.js:436
+#: src/blocks/blog-card/editor.js:263
 msgid "Description"
 msgstr ""
 
-#: build/editors.js:450
-#: build/editors.js:1315
-#: src/blocks/blog-card/editor.js:298
-#: src/blocks/section/editor.js:200
+#: build/editors.js:458
+#: build/editors.js:1462
+#: src/blocks/blog-card/editor.js:287
+#: src/blocks/section/editor.js:214
 msgid "Image"
 msgstr ""
 
-#: build/editors.js:466
-#: src/blocks/blog-card/editor.js:315
+#: build/editors.js:485
+#: src/blocks/blog-card/editor.js:317
 msgid "Image position"
 msgstr ""
 
-#: build/editors.js:475
-#: src/blocks/blog-card/editor.js:327
+#: build/editors.js:494
+#: src/blocks/blog-card/editor.js:329
 msgid "Image Fit"
 msgstr ""
 
-#: build/editors.js:510
-#: src/blocks/blog-card/editor.js:394
+#: build/editors.js:537
+#: src/blocks/blog-card/editor.js:406
 msgid "Link URL"
 msgstr ""
 
-#: build/editors.js:525
-#: src/blocks/blog-card/editor.js:407
+#: build/editors.js:556
+#: src/blocks/blog-card/editor.js:425
 msgid "Load"
 msgstr ""
 
-#: build/editors.js:610
-#: build/editors.js:1142
-#: build/editors.js:1159
-#: src/blocks/box/editor.js:21
+#: build/editors.js:641
+#: build/editors.js:1256
+#: build/editors.js:1266
+#: src/blocks/box/editor.js:20
 #: src/blocks/section/editor.js:22
-#: src/blocks/section/editor.js:34
+#: src/blocks/section/editor.js:28
 msgid "Center"
 msgstr ""
 
-#: build/editors.js:620
-#: src/blocks/box/editor.js:27
+#: build/editors.js:651
+#: src/blocks/box/editor.js:26
 msgid "Solid"
 msgstr ""
 
-#: build/editors.js:623
-#: src/blocks/box/editor.js:28
+#: build/editors.js:654
+#: src/blocks/box/editor.js:27
 msgid "Dashed"
 msgstr ""
 
-#: build/editors.js:626
-#: src/blocks/box/editor.js:29
+#: build/editors.js:657
+#: src/blocks/box/editor.js:28
 msgid "Dotted"
 msgstr ""
 
-#: build/editors.js:629
-#: src/blocks/box/editor.js:30
+#: build/editors.js:660
+#: src/blocks/box/editor.js:29
 msgid "Double"
 msgstr ""
 
-#: build/editors.js:645
-#: src/blocks/box/editor.js:52
+#: build/editors.js:811
+#: src/blocks/box/editor.js:156
 msgid "Box"
 msgstr ""
 
-#: build/editors.js:646
-#: src/blocks/box/editor.js:53
+#: build/editors.js:812
+#: src/blocks/box/editor.js:157
 msgid "You can set up decorative boxes and place content inside."
 msgstr ""
 
-#: build/editors.js:790
-#: src/blocks/box/editor.js:215
+#: build/editors.js:930
+#: src/blocks/box/editor.js:276
 msgid "Basic Settings"
 msgstr ""
 
-#: build/editors.js:792
-#: build/editors.js:1354
-#: src/blocks/box/editor.js:218
-#: src/blocks/section/editor.js:247
+#: build/editors.js:932
+#: build/editors.js:1517
+#: src/blocks/box/editor.js:279
+#: src/blocks/section/editor.js:280
 msgid "Use the Max Width"
 msgstr ""
 
-#: build/editors.js:801
-#: build/editors.js:1363
-#: src/blocks/box/editor.js:228
-#: src/blocks/section/editor.js:257
+#: build/editors.js:941
+#: build/editors.js:1526
+#: src/blocks/box/editor.js:289
+#: src/blocks/section/editor.js:290
 msgid "Max Width (px)"
 msgstr ""
 
-#: build/editors.js:813
-#: build/editors.js:1330
-#: build/editors.js:1375
-#: src/blocks/box/editor.js:241
-#: src/blocks/section/editor.js:217
-#: src/blocks/section/editor.js:270
+#: build/editors.js:953
+#: build/editors.js:1485
+#: build/editors.js:1538
+#: src/blocks/box/editor.js:302
+#: src/blocks/section/editor.js:241
+#: src/blocks/section/editor.js:303
 msgid "Position"
 msgstr ""
 
-#: build/editors.js:823
-#: src/blocks/box/editor.js:252
+#: build/editors.js:963
+#: src/blocks/box/editor.js:313
 msgid "Round Shape (px)"
 msgstr ""
 
-#: build/editors.js:835
-#: build/editors.js:1304
-#: src/blocks/box/editor.js:266
-#: src/blocks/section/editor.js:189
+#: build/editors.js:975
+#: build/editors.js:1451
+#: src/blocks/box/editor.js:327
+#: src/blocks/section/editor.js:203
 msgid "Background"
 msgstr ""
 
-#: build/editors.js:837
-#: src/blocks/box/editor.js:269
+#: build/editors.js:977
+#: src/blocks/box/editor.js:330
 msgid "Use the Background"
 msgstr ""
 
-#: build/editors.js:845
-#: build/editors.js:899
-#: build/editors.js:983
-#: build/editors.js:1306
-#: src/blocks/box/editor.js:278
-#: src/blocks/box/editor.js:343
-#: src/blocks/box/editor.js:440
-#: src/blocks/section/editor.js:190
+#: build/editors.js:985
+#: build/editors.js:1039
+#: build/editors.js:1123
+#: build/editors.js:1453
+#: src/blocks/box/editor.js:339
+#: src/blocks/box/editor.js:404
+#: src/blocks/box/editor.js:501
+#: src/blocks/section/editor.js:204
 msgid "Color"
 msgstr ""
 
-#: build/editors.js:855
-#: build/editors.js:909
-#: build/editors.js:993
-#: build/editors.js:1340
-#: src/blocks/box/editor.js:291
-#: src/blocks/box/editor.js:356
-#: src/blocks/box/editor.js:453
-#: src/blocks/section/editor.js:230
+#: build/editors.js:995
+#: build/editors.js:1049
+#: build/editors.js:1133
+#: build/editors.js:1495
+#: src/blocks/box/editor.js:352
+#: src/blocks/box/editor.js:417
+#: src/blocks/box/editor.js:514
+#: src/blocks/section/editor.js:254
 msgid "Opacity"
 msgstr ""
 
-#: build/editors.js:867
-#: src/blocks/box/editor.js:305
+#: build/editors.js:1007
+#: src/blocks/box/editor.js:366
 msgid "Border"
 msgstr ""
 
-#: build/editors.js:869
-#: src/blocks/box/editor.js:308
+#: build/editors.js:1009
+#: src/blocks/box/editor.js:369
 msgid "Use the Border"
 msgstr ""
 
-#: build/editors.js:878
-#: src/blocks/box/editor.js:320
+#: build/editors.js:1018
+#: src/blocks/box/editor.js:381
 msgid "Width"
 msgstr ""
 
-#: build/editors.js:890
-#: src/blocks/box/editor.js:333
+#: build/editors.js:1030
+#: src/blocks/box/editor.js:394
 msgid "Style"
 msgstr ""
 
-#: build/editors.js:921
-#: src/blocks/box/editor.js:370
+#: build/editors.js:1061
+#: src/blocks/box/editor.js:431
 msgid "Shadow"
 msgstr ""
 
-#: build/editors.js:923
-#: src/blocks/box/editor.js:373
+#: build/editors.js:1063
+#: src/blocks/box/editor.js:434
 msgid "Use the Shadow"
 msgstr ""
 
-#: build/editors.js:932
-#: src/blocks/box/editor.js:385
+#: build/editors.js:1072
+#: src/blocks/box/editor.js:446
 msgid "X Offset (px)"
 msgstr ""
 
-#: build/editors.js:945
-#: src/blocks/box/editor.js:399
+#: build/editors.js:1085
+#: src/blocks/box/editor.js:460
 msgid "Y Offset (px)"
 msgstr ""
 
-#: build/editors.js:958
-#: src/blocks/box/editor.js:413
+#: build/editors.js:1098
+#: src/blocks/box/editor.js:474
 msgid "Blur (px)"
 msgstr ""
 
-#: build/editors.js:971
-#: src/blocks/box/editor.js:427
+#: build/editors.js:1111
+#: src/blocks/box/editor.js:488
 msgid "Spread (px)"
 msgstr ""
 
-#: build/editors.js:1005
-#: build/editors.js:1352
-#: src/blocks/box/editor.js:467
-#: src/blocks/section/editor.js:244
+#: build/editors.js:1145
+#: build/editors.js:1507
+#: src/blocks/box/editor.js:528
+#: src/blocks/section/editor.js:268
 msgid "Inner"
 msgstr ""
 
-#: build/editors.js:1008
-#: build/editors.js:1385
-#: src/blocks/box/editor.js:471
-#: src/blocks/section/editor.js:281
+#: build/editors.js:1148
+#: build/editors.js:1548
+#: src/blocks/box/editor.js:532
+#: src/blocks/section/editor.js:314
 msgid "Padding Top (px)"
 msgstr ""
 
-#: build/editors.js:1021
-#: build/editors.js:1398
-#: src/blocks/box/editor.js:485
-#: src/blocks/section/editor.js:295
+#: build/editors.js:1161
+#: build/editors.js:1561
+#: src/blocks/box/editor.js:546
+#: src/blocks/section/editor.js:328
 msgid "Padding Right (px)"
 msgstr ""
 
-#: build/editors.js:1034
-#: build/editors.js:1411
-#: src/blocks/box/editor.js:499
-#: src/blocks/section/editor.js:309
+#: build/editors.js:1174
+#: build/editors.js:1574
+#: src/blocks/box/editor.js:560
+#: src/blocks/section/editor.js:342
 msgid "Padding Bottom (px)"
 msgstr ""
 
-#: build/editors.js:1047
-#: build/editors.js:1424
-#: src/blocks/box/editor.js:513
-#: src/blocks/section/editor.js:323
+#: build/editors.js:1187
+#: build/editors.js:1587
+#: src/blocks/box/editor.js:574
+#: src/blocks/section/editor.js:356
 msgid "Padding Left (px)"
 msgstr ""
 
-#: build/editors.js:1145
+#: build/editors.js:1259
 #: src/blocks/section/editor.js:23
 msgid "Top"
 msgstr ""
 
-#: build/editors.js:1148
+#: build/editors.js:1262
 #: src/blocks/section/editor.js:24
 msgid "Bottom"
 msgstr ""
 
-#: build/editors.js:1169
-#: src/blocks/section/editor.js:40
+#: build/editors.js:1364
+#: src/blocks/section/editor.js:111
 msgid "Section"
 msgstr ""
 
-#: build/editors.js:1170
-#: src/blocks/section/editor.js:41
+#: build/editors.js:1365
+#: src/blocks/section/editor.js:112
 msgid "You can set up full-width sections and place content inside."
+msgstr ""
+
+#: build/editors.js:1509
+#: src/blocks/section/editor.js:271
+msgid "Use the Maximize"
 msgstr ""
 
 #: src/blocks/compact-box/editor.js:26

@@ -2,6 +2,15 @@
   position: relative;
 }
 
+.qroko-blocks-section.is-fullwidth .qroko-blocks-section-inner .wp-block {
+  max-width: none;
+}
+
+.block-editor-block-list__block[data-align="full"] {
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
 .qroko-blocks-section-background {
   position: absolute;
   top: 0;

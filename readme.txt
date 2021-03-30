@@ -4,7 +4,7 @@ Donate link: https://wordpress.org/plugins/qroko-blocks/
 Tags: qroko, gutenberg, blocks, block, blog, card, link
 Requires at least: 5.4
 Tested up to: 5.6
-Stable tag: 1.3.1
+Stable tag: 1.4.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -44,6 +44,9 @@ Yes, you can use it with any theme that has Gutenberg enabled.
 6. Box (Front)
 
 == Changelog ==
+
+= 1.4.0 =
+* Section Block: Added a setting to maximize the inner
 
 = 1.3.1 =
 * Fix

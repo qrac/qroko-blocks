@@ -151,6 +151,10 @@ registerBlockType("qroko-blocks/section", {
       type: "number",
       default: 100,
     },
+    innerMaximizeTrigger: {
+      type: "boolean",
+      default: false,
+    },
     innerMaxWidthTrigger: {
       type: "boolean",
       default: false,
@@ -180,10 +184,19 @@ registerBlockType("qroko-blocks/section", {
       default: 0,
     },
   },
+  getEditWrapperProps(attributes) {
+    return {
+      "data-align": attributes.innerMaximizeTrigger && "full",
+    }
+  },
   edit({ attributes, className, setAttributes }) {
     return (
       <section
-        className={classNames(className, "qroko-blocks-section")}
+        className={classNames(
+          className,
+          "qroko-blocks-section",
+          attributes.innerMaximizeTrigger && "is-fullwidth"
+        )}
         style={sectionVariables({ attributes: attributes })}
       >
         <InspectorControls>
@@ -254,6 +267,15 @@ registerBlockType("qroko-blocks/section", {
           </PanelBody>
           <PanelBody title={__("Inner", "qroko-blocks")}>
             <BaseControl>
+              <ToggleControl
+                label={__("Use the Maximize", "qroko-blocks")}
+                onChange={() => {
+                  setAttributes({
+                    innerMaximizeTrigger: !attributes.innerMaximizeTrigger,
+                  })
+                }}
+                checked={attributes.innerMaximizeTrigger}
+              />
               <ToggleControl
                 label={__("Use the Max Width", "qroko-blocks")}
                 onChange={() => {
@@ -356,7 +378,11 @@ registerBlockType("qroko-blocks/section", {
   save({ attributes, className }) {
     return (
       <section
-        className={classNames(className, "qroko-blocks-section")}
+        className={classNames(
+          className,
+          "qroko-blocks-section",
+          attributes.innerMaximizeTrigger && "is-fullwidth"
+        )}
         style={sectionVariables({ attributes: attributes })}
       >
         <div className="qroko-blocks-section-background"></div>
