@@ -19,7 +19,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@wordpress/scripts": "^13.0.2",
+    "@wordpress/scripts": "^30.19.0",
     "classnames": "^2.2.6",
     "po2json": "^1.0.0-beta-2"
   }
